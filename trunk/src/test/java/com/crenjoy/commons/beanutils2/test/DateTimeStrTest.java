@@ -13,8 +13,12 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.FormatStyle;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import org.apache.commons.beanutils2.ConvertUtils;
 import org.apache.commons.beanutils2.converters.InstantConverter;
@@ -59,6 +63,17 @@ public class DateTimeStrTest {
     OffsetDateTimeConverter c5 = new OffsetDateTimeConverter();
     c5.setPatterns(Constants.getOffsetDateTime());
     ConvertUtils.register(c5, OffsetDateTime.class);
+  }
+
+  /**
+   * 测试Parse大小写敏感
+   */
+  @Test
+  public void testCaseSensitive() {
+    DateTimeFormatter dtf = new DateTimeFormatterBuilder().parseCaseInsensitive()
+        .appendLocalized(null, FormatStyle.SHORT).toFormatter().withLocale(Locale.US);
+    LocalTime lt = LocalTime.parse("11:44 am", dtf);
+    log.info("LocalTime: " + lt);
   }
 
   @Test
@@ -199,13 +214,12 @@ public class DateTimeStrTest {
   public void testParseOffsetTime() {
     // java.time.OffsetTime
     OffsetTime offsetTime = OffsetTime.now();
-    String offsetTimeStr = (String)ConvertUtils.convert(offsetTime, String.class);
+    String offsetTimeStr = (String) ConvertUtils.convert(offsetTime, String.class);
     log.info("OffsetTime: " + offsetTimeStr);
     assertEquals(offsetTime.toString(), offsetTimeStr);
 
     // parse OffsetTime
-    OffsetTime dateParsed = (OffsetTime) ConvertUtils.convert(offsetTimeStr,
-        OffsetTime.class);
+    OffsetTime dateParsed = (OffsetTime) ConvertUtils.convert(offsetTimeStr, OffsetTime.class);
     assertEquals(dateParsed, dateParsed);
   }
 
@@ -274,38 +288,5 @@ public class DateTimeStrTest {
     log.info("OffsetDateTime: " + ConvertUtils.convert(offsetDateTime));
 
   }
-
-//LocalTime.parse("11:44 am".toLowerCase(),dtf);
-//
-//
-//LocalTime.parse("11:44 PM",f);
-//LocalTime.parse("3:06 PM",f);
-
-// 3:06 pm
-// f.parse("11:44 AM");
-
-//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.N");
-//log.info(formatter.format(LocalDateTime.now()));
-//
-//// log.info(DateTimeFormatter.ISO_DATE_TIME);
-//LocalDateTimeConverter c = new LocalDateTimeConverter();
-//// c.setPattern(null);
-//// c.setLocale(Locale.CHINA);
-//c.setPattern("yyyy-MM-dd'T'HH:mm:ss.n");
-//// c.setPattern(DateTimeFormatter.ISO_DATE_TIME.toFormat().toString());
-//ConvertUtils.register(c, LocalDateTime.class);
-//
-//Object obj = ConvertUtils.convert("2022-10-21T10:56:37.997553", LocalDateTime.class);
-// Object obj = ConvertUtils.convert("2022-10-21T10:09:06.433241400",
-// LocalDateTime.class);
-// assertEquals(obj,DateTimeFormatter.ISO_DATE_TIME.parse("2022-10-21T10:09:06.433241400"));
-
-//utils.setProperty(test, "testLocalDateTime", LocalDateTime.now());
-//
-//// utils.setProperty(test, "testLocalDateTime", new Date());
-//
-//assertThrows(ConversionException.class, () -> {
-//  utils.setProperty(test, "testLocalDateTime", "2019-12-10 23:59:59");
-//});
 
 }
