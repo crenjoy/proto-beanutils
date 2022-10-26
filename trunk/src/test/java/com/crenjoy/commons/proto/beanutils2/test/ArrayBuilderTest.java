@@ -1,4 +1,4 @@
-package com.crenjoy.commons.beanutils2.test;
+package com.crenjoy.commons.proto.beanutils2.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
