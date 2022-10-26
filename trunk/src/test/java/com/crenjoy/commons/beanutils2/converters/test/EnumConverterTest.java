@@ -1,4 +1,4 @@
-package com.crenjoy.commons.beanutils2.test;
+package com.crenjoy.commons.beanutils2.converters.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author CGD
  *
  */
-public class EnumTest {
+public class EnumConverterTest {
 
   @Test
   public void testEnumToStr() {

@@ -1,8 +1,8 @@
-package com.crenjoy.commons.beanutils2.test;
+package com.crenjoy.commons.beanutils2.converters.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.crenjoy.commons.proto.beanutils2.Constants;
+import com.crenjoy.commons.proto.beanutils2.ProtoConvertUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.Instant;
@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -21,11 +20,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.beanutils2.ConvertUtils;
-import org.apache.commons.beanutils2.converters.InstantConverter;
-import org.apache.commons.beanutils2.converters.LocalDateConverter;
-import org.apache.commons.beanutils2.converters.LocalDateTimeConverter;
-import org.apache.commons.beanutils2.converters.OffsetDateTimeConverter;
-import org.apache.commons.beanutils2.converters.ZonedDateTimeConverter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.BeforeAll;
@@ -37,32 +31,13 @@ import org.junit.jupiter.api.Test;
  * @author CGD
  *
  */
-public class DateTimeStrTest {
+public class DateTimeConverterTest {
 
-  private Log log = LogFactory.getLog(DateTimeStrTest.class);
+  private Log log = LogFactory.getLog(DateTimeConverterTest.class);
 
   @BeforeAll
   public static void register() {
-    InstantConverter c1 = new InstantConverter();
-    c1.setZoneId(ZoneId.of("+0"));
-    c1.setPatterns(Constants.getInstant());
-    ConvertUtils.register(c1, Instant.class);
-
-    LocalDateTimeConverter c2 = new LocalDateTimeConverter();
-    c2.setPatterns(Constants.getLocalDateTime());
-    ConvertUtils.register(c2, LocalDateTime.class);
-
-    LocalDateConverter c3 = new LocalDateConverter();
-    c3.setPatterns(Constants.getLocalDate());
-    ConvertUtils.register(c3, LocalDate.class);
-
-    ZonedDateTimeConverter c4 = new ZonedDateTimeConverter();
-    c4.setPatterns(Constants.getZonedDateTime());
-    ConvertUtils.register(c4, ZonedDateTime.class);
-
-    OffsetDateTimeConverter c5 = new OffsetDateTimeConverter();
-    c5.setPatterns(Constants.getOffsetDateTime());
-    ConvertUtils.register(c5, OffsetDateTime.class);
+    ProtoConvertUtils.init();
   }
 
   /**
