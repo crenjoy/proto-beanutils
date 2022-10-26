@@ -145,7 +145,6 @@ public abstract class DateTimeConverter<D> extends AbstractConverter<D> {
     Exception firstEx = null;
     for (final DateTimeFormatter format : formatters) {
       try {
-
         final TemporalAccessor temporalAccessor = DateTimeParse.parse(value, format);
         return temporalAccessor;
       } catch (final Exception ex) {
