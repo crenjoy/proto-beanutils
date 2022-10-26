@@ -1,5 +1,7 @@
 package com.crenjoy.commons.proto.beanutils2;
 
+import com.crenjoy.commons.proto.beanutils2.converters.ByteArrayConverter;
+import com.crenjoy.commons.proto.beanutils2.converters.ByteStringConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.EnumConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.InstantConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.LocalDateConverter;
@@ -9,6 +11,7 @@ import com.crenjoy.commons.proto.beanutils2.converters.OffsetDateTimeConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.OffsetTimeConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.TimestampConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.ZonedDateTimeConverter;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Timestamp;
 
 import java.math.BigDecimal;
@@ -60,6 +63,8 @@ public class ProtoConvertUtils extends ConvertUtils {
     BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
     ConvertUtils.register(db, BigDecimal.class);
     ConvertUtils.register(new EnumConverter<>(), Enum.class);
+    ConvertUtils.register(new ByteStringConverter(), ByteString.class);
+    ConvertUtils.register(new ByteArrayConverter(), byte[].class);
   }
 
 }
