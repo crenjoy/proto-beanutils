@@ -15,8 +15,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.beanutils2.ConvertUtils;
@@ -57,7 +55,7 @@ public class DateTimeConverterTest {
     Instant instant = Instant.now();
     String instantStr = (String) ConvertUtils.convert(instant, String.class);
     log.info("Instant: " + instantStr);
-    // assertEquals(instant.toString(), instantStr);
+    assertEquals(DateTimeFormatter.ISO_INSTANT.format(instant), instantStr);
 
     // parse Instant
     Instant instantParsed = (Instant) ConvertUtils.convert(instantStr, Instant.class);
@@ -70,7 +68,7 @@ public class DateTimeConverterTest {
     LocalDateTime datetime = LocalDateTime.now();
     String datetimeStr = (String) ConvertUtils.convert(datetime, String.class);
     log.info("LocalDateTime: " + datetimeStr);
-    // assertEquals(datetime.toString(), datetimeStr);
+    assertEquals(DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(datetime), datetimeStr);
 
     // parse LocalDateTime
     LocalDateTime datetimeParsed = (LocalDateTime) ConvertUtils.convert(datetimeStr,
@@ -108,7 +106,7 @@ public class DateTimeConverterTest {
     LocalDate localDate = LocalDate.now();
     String dateStr = (String) ConvertUtils.convert(localDate, String.class);
     log.info("LocalDate: " + dateStr);
-    assertEquals(localDate.toString(), dateStr);
+    assertEquals(DateTimeFormatter.ISO_LOCAL_DATE.format(localDate), dateStr);
 
     // parse LocalDate
     LocalDate dateParsed = (LocalDate) ConvertUtils.convert(dateStr, LocalDate.class);
@@ -140,7 +138,7 @@ public class DateTimeConverterTest {
     LocalTime localTime = LocalTime.now();
     String localTimeStr = (String) ConvertUtils.convert(localTime, String.class);
     log.info("LocalTime: " + localTimeStr);
-    assertEquals(localTime.toString(), localTimeStr);
+    assertEquals(DateTimeFormatter.ISO_LOCAL_TIME.format(localTime), localTimeStr);
 
     // parse LocalTime
     LocalTime dateParsed = (LocalTime) ConvertUtils.convert(localTimeStr, LocalTime.class);
@@ -162,7 +160,7 @@ public class DateTimeConverterTest {
     ZonedDateTime zonedDt = ZonedDateTime.now();
     String zonedDtStr = (String) ConvertUtils.convert(zonedDt, String.class);
     log.info("ZonedDateTime: " + zonedDtStr);
-    // assertEquals(zonedDt.toString(), zonedDtStr);
+    assertEquals(DateTimeFormatter.ISO_ZONED_DATE_TIME.format(zonedDt), zonedDtStr);
 
     // parse ZonedDateTime
     ZonedDateTime dateParsed = (ZonedDateTime) ConvertUtils.convert(zonedDtStr,
@@ -177,7 +175,7 @@ public class DateTimeConverterTest {
     OffsetDateTime offsetDateTime = OffsetDateTime.now();
     String offsetDateTimeStr = (String) ConvertUtils.convert(offsetDateTime, String.class);
     log.info("OffsetDateTime: " + offsetDateTimeStr);
-    // assertEquals(offsetDateTime.toString(), offsetDateTimeStr);
+    assertEquals(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(offsetDateTime), offsetDateTimeStr);
 
     // parse OffsetDateTime
     OffsetDateTime dateParsed = (OffsetDateTime) ConvertUtils.convert(offsetDateTimeStr,
@@ -191,7 +189,7 @@ public class DateTimeConverterTest {
     OffsetTime offsetTime = OffsetTime.now();
     String offsetTimeStr = (String) ConvertUtils.convert(offsetTime, String.class);
     log.info("OffsetTime: " + offsetTimeStr);
-    assertEquals(offsetTime.toString(), offsetTimeStr);
+    assertEquals(DateTimeFormatter.ISO_OFFSET_TIME.format(offsetTime), offsetTimeStr);
 
     // parse OffsetTime
     OffsetTime dateParsed = (OffsetTime) ConvertUtils.convert(offsetTimeStr, OffsetTime.class);
@@ -206,61 +204,48 @@ public class DateTimeConverterTest {
    */
   @Test
   public void testConvertString() throws IllegalAccessException, InvocationTargetException {
-
-    // java.util.Date
-    Date date = new Date();
-    assertEquals(date.toString(), ConvertUtils.convert(date));
-    log.info("Date: " + ConvertUtils.convert(date));
-
-    // Calendar
-    Calendar cal = Calendar.getInstance();
-    assertEquals(cal.toString(), ConvertUtils.convert(cal));
-    log.info("Calendar: " + ConvertUtils.convert(cal));
-
-    // java.sql.Date
-    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-    assertEquals(sqlDate.toString(), ConvertUtils.convert(sqlDate));
-    log.info("SqlDate: " + ConvertUtils.convert(sqlDate));
-
-    // java.sql.Time
-    java.sql.Time sqlTime = new java.sql.Time(date.getTime());
-    assertEquals(sqlTime.toString(), ConvertUtils.convert(sqlTime));
-    log.info("SqlTime: " + ConvertUtils.convert(sqlTime));
-
-    // java.sql.timestamp
-    java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
-    assertEquals(timestamp.toString(), ConvertUtils.convert(timestamp));
-    log.info("Timestamp: " + ConvertUtils.convert(timestamp));
-
     // java.time.Instant
+
     Instant instant = Instant.now();
-    assertEquals(instant.toString(), ConvertUtils.convert(instant));
-    log.info("Instant: " + ConvertUtils.convert(instant));
+    assertEquals(DateTimeFormatter.ISO_INSTANT.format(instant),
+        ConvertUtils.convert(instant, String.class));
+    log.info("Instant: " + ConvertUtils.convert(instant, String.class));
 
     // java.time.LocalDateTime
     LocalDateTime datetime = LocalDateTime.now();
-    assertEquals(datetime.toString(), ConvertUtils.convert(datetime));
-    log.info("LocalDateTime: " + ConvertUtils.convert(datetime));
+    assertEquals(DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(datetime),
+        ConvertUtils.convert(datetime, String.class));
+    log.info("LocalDateTime: " + ConvertUtils.convert(datetime, String.class));
 
     // java.time.LocalDate
     LocalDate localDate = LocalDate.now();
-    assertEquals(localDate.toString(), ConvertUtils.convert(localDate));
-    log.info("LocalDate: " + ConvertUtils.convert(localDate));
+    assertEquals(DateTimeFormatter.ISO_LOCAL_DATE.format(localDate),
+        ConvertUtils.convert(localDate, String.class));
+    log.info("LocalDate: " + ConvertUtils.convert(localDate, String.class));
 
     // java.time.LocalTime
     LocalTime localTime = LocalTime.now();
-    assertEquals(localTime.toString(), ConvertUtils.convert(localTime));
-    log.info("LocalTime: " + ConvertUtils.convert(localTime));
+    assertEquals(DateTimeFormatter.ISO_LOCAL_TIME.format(localTime),
+        ConvertUtils.convert(localTime, String.class));
+    log.info("LocalTime: " + ConvertUtils.convert(localTime, String.class));
 
     // java.time.ZonedDateTime
     ZonedDateTime zonedDt = ZonedDateTime.now();
-    assertEquals(zonedDt.toString(), ConvertUtils.convert(zonedDt));
-    log.info("ZonedDateTime: " + ConvertUtils.convert(zonedDt));
+    assertEquals(DateTimeFormatter.ISO_ZONED_DATE_TIME.format(zonedDt),
+        ConvertUtils.convert(zonedDt, String.class));
+    log.info("ZonedDateTime: " + ConvertUtils.convert(zonedDt, String.class));
 
     // java.time.OffsetDateTime
     OffsetDateTime offsetDateTime = OffsetDateTime.now();
-    assertEquals(offsetDateTime.toString(), ConvertUtils.convert(offsetDateTime));
-    log.info("OffsetDateTime: " + ConvertUtils.convert(offsetDateTime));
+    assertEquals(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(offsetDateTime),
+        ConvertUtils.convert(offsetDateTime, String.class));
+    log.info("OffsetDateTime: " + ConvertUtils.convert(offsetDateTime, String.class));
+
+    // java.time.OffsetTime
+    OffsetTime offsetTime = OffsetTime.now();
+    assertEquals(DateTimeFormatter.ISO_OFFSET_TIME.format(offsetTime),
+        ConvertUtils.convert(offsetTime, String.class));
+    log.info("OffsetTime: " + ConvertUtils.convert(offsetTime, String.class));
 
   }
 
