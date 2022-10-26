@@ -1,5 +1,6 @@
 package com.crenjoy.commons.proto.beanutils2;
 
+import com.crenjoy.commons.proto.beanutils2.converters.EnumConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.InstantConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.LocalDateConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.LocalDateTimeConverter;
@@ -34,19 +35,14 @@ public class ProtoConvertUtils extends ConvertUtils {
 
   public static void init() {
     initLocale();
-    initBigDecimal();
     initDateConverter();
+    initOtherConverter();
   }
 
   public static void initLocale() {
     Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
     final TimeZone timeZone = TimeZone.getTimeZone("Asia/Shanghai");
     TimeZone.setDefault(timeZone);
-  }
-
-  public static void initBigDecimal() {
-    BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
-    ConvertUtils.register(db, java.math.BigDecimal.class);
   }
 
   public static void initDateConverter() {
@@ -58,6 +54,12 @@ public class ProtoConvertUtils extends ConvertUtils {
     ConvertUtils.register(new OffsetTimeConverter(), OffsetTime.class);
     ConvertUtils.register(new TimestampConverter(), Timestamp.class);
     ConvertUtils.register(new ZonedDateTimeConverter(), ZonedDateTime.class);
+  }
+
+  public static void initOtherConverter() {
+    BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
+    ConvertUtils.register(db, BigDecimal.class);
+    ConvertUtils.register(new EnumConverter<>(), Enum.class);
   }
 
 }
