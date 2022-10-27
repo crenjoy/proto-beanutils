@@ -2,6 +2,8 @@ package com.crenjoy.commons.proto.beanutils2;
 
 import com.crenjoy.commons.proto.beanutils2.converters.ByteArrayConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.ByteStringConverter;
+import com.crenjoy.commons.proto.beanutils2.converters.DurationConverter;
+import com.crenjoy.commons.proto.beanutils2.converters.DurationProtoConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.EnumConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.InstantConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.LocalDateConverter;
@@ -62,9 +64,14 @@ public class ProtoConvertUtils extends ConvertUtils {
   public static void initOtherConverter() {
     BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
     ConvertUtils.register(db, BigDecimal.class);
+    // Enum <-> String/Integer
     ConvertUtils.register(new EnumConverter<>(), Enum.class);
+    // ByteString <-> byte[]
     ConvertUtils.register(new ByteStringConverter(), ByteString.class);
     ConvertUtils.register(new ByteArrayConverter(), byte[].class);
+    // Time Duration <-> Proto Duration
+    ConvertUtils.register(new DurationConverter(), java.time.Duration.class);
+    ConvertUtils.register(new DurationProtoConverter(), com.google.protobuf.Duration.class);
   }
 
 }

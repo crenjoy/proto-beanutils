@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class LocalDateConverter extends DateTimeConverter<LocalDate> {
 
   public LocalDateConverter() {
-    this(null);
+    this(LocalDate.EPOCH);
   }
 
   public LocalDateConverter(final LocalDate defaultValue) {

@@ -32,6 +32,7 @@ public class ByteArrayConverter extends AbstractConverter<byte[]> {
 
   @Override
   protected <R> R convertToType(Class<R> type, Object value) throws Throwable {
+    // Handle SubClass Type
     if (type.isAssignableFrom(value.getClass())) {
       return type.cast(value);
     }

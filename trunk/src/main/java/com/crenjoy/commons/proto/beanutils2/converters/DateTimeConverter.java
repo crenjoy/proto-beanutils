@@ -63,6 +63,10 @@ public abstract class DateTimeConverter<D> extends AbstractConverter<D> {
   @Override
   protected <R> R convertToType(final Class<R> targetType, final Object value) throws Throwable {
     final Class<?> sourceType = value.getClass();
+    //Handle SubClass Type
+    if (targetType.isAssignableFrom(sourceType)) {
+      return targetType.cast(value);
+    }
 
     // Handle Timestamp
     if (value instanceof Timestamp) {

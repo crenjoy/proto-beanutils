@@ -1,6 +1,7 @@
 package com.crenjoy.commons.proto.beanutils2.converters;
 
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Timestamps;
 
 import java.time.format.DateTimeFormatter;
 
@@ -13,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 public class TimestampConverter extends DateTimeConverter<Timestamp> {
 
   public TimestampConverter() {
-    this(Timestamp.newBuilder().build());
+    this(Timestamps.EPOCH);
   }
 
   public TimestampConverter(final Timestamp defaultValue) {

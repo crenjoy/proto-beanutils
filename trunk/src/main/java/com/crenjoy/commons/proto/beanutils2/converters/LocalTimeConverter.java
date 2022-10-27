@@ -13,7 +13,7 @@ import java.time.LocalTime;
 public class LocalTimeConverter extends DateTimeConverter<LocalTime> {
 
   public LocalTimeConverter() {
-    this(null);
+    this(LocalTime.MIN);
   }
 
   public LocalTimeConverter(final LocalTime defaultValue) {

@@ -26,6 +26,7 @@ public class ByteStringConverterTest {
     ProtoConvertUtils.init();
   }
 
+  @SuppressWarnings("rawtypes")
   @Test
   public void testToByteString() {
     Converter c = ConvertUtils.lookup(ByteString.class);
@@ -38,6 +39,7 @@ public class ByteStringConverterTest {
     assertArrayEquals(bytes, bs.toByteArray());
   }
 
+  @SuppressWarnings("rawtypes")
   @Test
   public void testFromByteString() {
     Converter c = ConvertUtils.lookup(byte[].class);
