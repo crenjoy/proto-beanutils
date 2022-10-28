@@ -1,4 +1,4 @@
-package com.crenjoy.proto.beanutils.message.test;
+package com.crenjoy.proto.mapper.message.test;
 
 import com.google.protobuf.ByteString;
 

@@ -1,6 +1,6 @@
 package com.crenjoy.proto.beanutils.test;
 
-import com.crenjoy.proto.beanutils.message.test.Basic1TestMsgBuilder;
+import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;

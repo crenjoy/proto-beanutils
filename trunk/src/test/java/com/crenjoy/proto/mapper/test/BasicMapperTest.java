@@ -1,10 +1,9 @@
-package com.crenjoy.proto.beanutils.test;
+package com.crenjoy.proto.mapper.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1Bean;
-import com.crenjoy.proto.beanutils.message.test.Basic1TestMsgBuilder;
-import com.crenjoy.proto.beanutils.message.test.BasicMapper;
+import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,7 +15,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import crenjoy.protobuf.Basic1TestMessage;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class BeanUtilsTest {
+public class BasicMapperTest {
 
   @Test
   public void testMessageToBean() throws IllegalAccessException, InstantiationException,
