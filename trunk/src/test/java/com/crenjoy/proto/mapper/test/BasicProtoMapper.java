@@ -3,20 +3,20 @@ package com.crenjoy.proto.mapper.test;
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1Bean;
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test2Bean;
 import com.crenjoy.proto.mapper.ProtoMapper;
-
+import crenjoy.protobuf.Basic1TestMessage;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import crenjoy.protobuf.Basic1TestMessage;
-
+/**
+ * Bean To Proto Message.
+ *
+ * @author CGD
+ *
+ */
 @Mapper
-public interface BasicMapper extends ProtoMapper {
+public interface BasicProtoMapper extends ProtoMapper {
 
-  BasicMapper INSTANCE = Mappers.getMapper(BasicMapper.class);
-
-  Basic1Test1Bean toBean1(Basic1TestMessage basicMsg);
-
-  Basic1Test2Bean toBean2(Basic1TestMessage basicMsg);
+  BasicProtoMapper INSTANCE = Mappers.getMapper(BasicProtoMapper.class);
 
   Basic1TestMessage toMessage1(Basic1Test1Bean basicBean);
 

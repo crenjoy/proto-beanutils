@@ -2,24 +2,16 @@ package com.crenjoy.proto.mapper;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.ByteString;
-
 import org.mapstruct.Mapper;
 
 /**
- * Proto Message and Bean Mapper.
- * 
+ * Target Proto Message Mapper.
+ *
  * @author CGD
  *
  */
 @Mapper
 public interface ProtoMapper {
-
-  /**
-   * ByteString To byte[].
-   */
-  default byte[] toByteArray(ByteString value) {
-    return ProtoConvertUtils.convert(value, byte[].class);
-  }
 
   /**
    * byte[] to ByteString.

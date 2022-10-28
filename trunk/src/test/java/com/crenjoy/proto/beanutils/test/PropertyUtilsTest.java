@@ -1,18 +1,16 @@
 package com.crenjoy.proto.beanutils.test;
 
 import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
-
+import crenjoy.protobuf.Basic1TestMessage;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import crenjoy.protobuf.Basic1TestMessage;
 
 /**
  * PropertyUtils Test.

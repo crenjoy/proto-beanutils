@@ -3,15 +3,13 @@ package com.crenjoy.proto.beanutils.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.crenjoy.proto.beanutils.ArrayBuilder;
-
 import java.util.Arrays;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.Test;
 
 /**
- * ArrayBuilder Test
+ * ArrayBuilder Test.
  *
  * @author CGD
  *
