@@ -8,9 +8,8 @@ import com.crenjoy.commons.proto.beanutils2.converters.DurationConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.DurationProtoConverter;
 import com.google.protobuf.util.Durations;
 
-import org.apache.commons.beanutils2.ConvertUtils;
-import org.apache.commons.beanutils2.Converter;
-import org.junit.jupiter.api.BeforeAll;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.Converter;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,7 +20,6 @@ import org.junit.jupiter.api.Test;
  */
 public class DurationConverterTest {
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testDurationParse() {
     Converter c = ProtoConvertUtils.lookup(String.class, java.time.Duration.class);
@@ -39,7 +37,6 @@ public class DurationConverterTest {
 
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testProtoDurationParse() {
     Converter c = ProtoConvertUtils.lookup(String.class, com.google.protobuf.Duration.class);
@@ -57,7 +54,6 @@ public class DurationConverterTest {
 
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testDurationToString() {
     Converter c = ProtoConvertUtils.lookup(java.time.Duration.class, String.class);
@@ -68,7 +64,6 @@ public class DurationConverterTest {
     assertEquals(a, "PT87660000H0.999999999S");
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testProtoDurationToString() {
     Converter c = ProtoConvertUtils.lookup(com.google.protobuf.Duration.class, String.class);
@@ -79,7 +74,6 @@ public class DurationConverterTest {
     assertEquals(a, "PT87660000H0.999999999S");
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testDuration() {
     Converter c = ProtoConvertUtils.lookup(java.time.Duration.class);
@@ -102,7 +96,6 @@ public class DurationConverterTest {
 
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testProtoDuration() {
     Converter c = ProtoConvertUtils.lookup(com.google.protobuf.Duration.class);

@@ -25,9 +25,9 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZonedDateTime;
 
-import org.apache.commons.beanutils2.ConvertUtilsBean;
-import org.apache.commons.beanutils2.Converter;
-import org.apache.commons.beanutils2.converters.BigDecimalConverter;
+import org.apache.commons.beanutils.ConvertUtilsBean;
+import org.apache.commons.beanutils.Converter;
+import org.apache.commons.beanutils.converters.BigDecimalConverter;
 
 /**
  * Proto ConvertUtilsBean.
@@ -83,9 +83,8 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
     register(new DurationProtoConverter(), com.google.protobuf.Duration.class);
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
-  public <T> Converter<T> lookup(Class<T> clazz) {
+  public Converter lookup(Class<?> clazz) {
     // Enum Converter
     if (null != clazz && clazz.isEnum()) {
       return (Converter) lookup(Enum.class);
@@ -93,9 +92,8 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
     return super.lookup(clazz);
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
-  public <T> Converter<T> lookup(Class<?> sourceType, Class<T> targetType) {
+  public Converter lookup(Class<?> sourceType, Class<?> targetType) {
     // Enum Converter
     if (null != sourceType && sourceType.isEnum()) {
       return (Converter) lookup(Enum.class);

@@ -20,7 +20,7 @@ import com.crenjoy.commons.proto.beanutils2.DurationUtils;
 
 import java.time.Duration;
 
-import org.apache.commons.beanutils2.converters.AbstractConverter;
+import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
  * {@link org.apache.commons.beanutils2.Converter} implementation that handles
@@ -33,7 +33,7 @@ import org.apache.commons.beanutils2.converters.AbstractConverter;
  * @since 2.0
  * @see java.time.Duration
  */
-public final class DurationConverter extends AbstractConverter<Duration> {
+public final class DurationConverter extends AbstractConverter {
 
   /**
    * Constructs a <b>java.time.Duration</b> <i>Converter</i> that throws a

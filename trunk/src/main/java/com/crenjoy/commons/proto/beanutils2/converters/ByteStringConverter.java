@@ -2,8 +2,10 @@ package com.crenjoy.commons.proto.beanutils2.converters;
 
 import com.google.protobuf.ByteString;
 
-import org.apache.commons.beanutils2.ConversionException;
-import org.apache.commons.beanutils2.converters.AbstractConverter;
+import java.util.Objects;
+
+import org.apache.commons.beanutils.ConversionException;
+import org.apache.commons.beanutils.converters.AbstractConverter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -13,7 +15,7 @@ import org.apache.commons.logging.LogFactory;
  * @author CGD
  *
  */
-public class ByteStringConverter extends AbstractConverter<ByteString> {
+public class ByteStringConverter extends AbstractConverter {
 
   private transient Log log;
 
@@ -46,6 +48,16 @@ public class ByteStringConverter extends AbstractConverter<ByteString> {
       getLog().warn("    " + msg);
     }
     throw new ConversionException(msg);
+  }
+
+  /**
+   * Converts the given object to a lower-case string.
+   *
+   * @param value the input string.
+   * @return the given string trimmed and converter to lower-case.
+   */
+  protected static String toString(final Object value) {
+    return Objects.requireNonNull(value, "value").toString();
   }
 
   @Override

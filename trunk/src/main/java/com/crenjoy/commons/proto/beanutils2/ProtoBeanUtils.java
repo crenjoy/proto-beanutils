@@ -20,8 +20,7 @@ package com.crenjoy.commons.proto.beanutils2;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-import org.apache.commons.beanutils2.BeanUtilsBean;
-import org.apache.commons.beanutils2.WeakFastHashMap;
+import org.apache.commons.beanutils.BeanUtilsBean;
 
 /**
  * <p>
@@ -436,18 +435,6 @@ public class ProtoBeanUtils {
    */
   public static boolean initCause(final Throwable throwable, final Throwable cause) {
     return ProtoBeanUtilsBean.getInstance().initCause(throwable, cause);
-  }
-
-  /**
-   * Create a cache.
-   * 
-   * @param <K> the key type of the cache
-   * @param <V> the value type of the cache
-   * @return a new cache
-   * @since 1.8.0
-   */
-  public static <K, V> Map<K, V> createCache() {
-    return new WeakFastHashMap<>();
   }
 
   /** An empty class array */

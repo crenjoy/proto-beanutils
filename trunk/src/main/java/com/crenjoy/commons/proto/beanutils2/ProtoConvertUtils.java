@@ -3,9 +3,9 @@ package com.crenjoy.commons.proto.beanutils2;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import org.apache.commons.beanutils2.ConversionException;
-import org.apache.commons.beanutils2.ConvertUtilsBean;
-import org.apache.commons.beanutils2.Converter;
+import org.apache.commons.beanutils.ConversionException;
+import org.apache.commons.beanutils.ConvertUtilsBean;
+import org.apache.commons.beanutils.Converter;
 
 /**
  * <p>
@@ -64,8 +64,9 @@ public class ProtoConvertUtils {
    *
    * @see ConvertUtilsBean#convert(String, Class)
    */
+  @SuppressWarnings("unchecked")
   public static <T> T convert(final String value, final Class<T> clazz) {
-    return (T)ProtoConvertUtilsBean.getInstance().convert(value, clazz);
+    return (T) ProtoConvertUtilsBean.getInstance().convert(value, clazz);
   }
 
   /**
@@ -100,8 +101,9 @@ public class ProtoConvertUtils {
    *
    * @throws ConversionException if thrown by an underlying Converter
    */
+  @SuppressWarnings("unchecked")
   public static <T> T convert(final Object value, final Class<T> targetType) {
-    return (T)ProtoConvertUtilsBean.getInstance().convert(value, targetType);
+    return (T) ProtoConvertUtilsBean.getInstance().convert(value, targetType);
   }
 
   /**
@@ -151,7 +153,7 @@ public class ProtoConvertUtils {
    * @return The registered {@link Converter} or {@code null} if not found
    * @see ConvertUtilsBean#lookup(Class)
    */
-  public static Converter<?> lookup(final Class<?> clazz) {
+  public static Converter lookup(final Class<?> clazz) {
     return ProtoConvertUtilsBean.getInstance().lookup(clazz);
   }
 
@@ -164,7 +166,7 @@ public class ProtoConvertUtils {
    * @param targetType Class of the value to be converted to
    * @return The registered {@link Converter} or {@code null} if not found
    */
-  public static Converter<?> lookup(final Class<?> sourceType, final Class<?> targetType) {
+  public static Converter lookup(final Class<?> sourceType, final Class<?> targetType) {
     return ProtoConvertUtilsBean.getInstance().lookup(sourceType, targetType);
   }
 
@@ -183,7 +185,7 @@ public class ProtoConvertUtils {
    *                  Converter
    * @see ConvertUtilsBean#register(Converter, Class)
    */
-  public static void register(final Converter<?> converter, final Class<?> clazz) {
+  public static void register(final Converter converter, final Class<?> clazz) {
     ProtoConvertUtilsBean.getInstance().register(converter, clazz);
   }
 

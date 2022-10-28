@@ -8,7 +8,7 @@ import com.crenjoy.commons.proto.beanutils2.converters.ByteArrayConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.ByteStringConverter;
 import com.google.protobuf.ByteString;
 
-import org.apache.commons.beanutils2.Converter;
+import org.apache.commons.beanutils.Converter;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test;
  */
 public class ByteStringConverterTest {
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testToByteString() {
     Converter c = ProtoConvertUtils.lookup(ByteString.class);
@@ -32,7 +31,6 @@ public class ByteStringConverterTest {
     assertArrayEquals(bytes, bs.toByteArray());
   }
 
-  @SuppressWarnings("rawtypes")
   @Test
   public void testFromByteString() {
     Converter c = ProtoConvertUtils.lookup(byte[].class);

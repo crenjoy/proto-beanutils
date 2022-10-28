@@ -16,8 +16,8 @@ import java.time.temporal.TemporalAccessor;
 import java.util.Locale;
 import java.util.Objects;
 
-import org.apache.commons.beanutils2.ConversionException;
-import org.apache.commons.beanutils2.converters.AbstractConverter;
+import org.apache.commons.beanutils.ConversionException;
+import org.apache.commons.beanutils.converters.AbstractConverter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -39,7 +39,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @param <D> The default value type.
  */
-public abstract class DateTimeConverter<D> extends AbstractConverter<D> {
+public abstract class DateTimeConverter<D> extends AbstractConverter {
 
   // DateTimeFormatter Thread Safely.
   private DateTimeFormatter[] formatters;
@@ -63,7 +63,7 @@ public abstract class DateTimeConverter<D> extends AbstractConverter<D> {
   @Override
   protected <R> R convertToType(final Class<R> targetType, final Object value) throws Throwable {
     final Class<?> sourceType = value.getClass();
-    //Handle SubClass Type
+    // Handle SubClass Type
     if (targetType.isAssignableFrom(sourceType)) {
       return targetType.cast(value);
     }
@@ -271,6 +271,26 @@ public abstract class DateTimeConverter<D> extends AbstractConverter<D> {
       getLog().warn("    " + msg);
     }
     throw new ConversionException(msg);
+  }
+
+  /**
+   * Converts the given object to a lower-case string.
+   *
+   * @param value the input string.
+   * @return the given string trimmed and converter to lower-case.
+   */
+  protected static String toString(final Object value) {
+    return Objects.requireNonNull(value, "value").toString();
+  }
+
+  /**
+   * Converts the given object to a lower-case string.
+   *
+   * @param value the input string.
+   * @return the given string trimmed and converter to lower-case.
+   */
+  protected static String toTrim(final Object value) {
+    return toString(value).trim();
   }
 
   protected Log getLog() {

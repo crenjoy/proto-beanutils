@@ -19,7 +19,7 @@ package com.crenjoy.commons.proto.beanutils2.converters;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.beanutils2.converters.AbstractConverter;
+import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
  * {@link org.apache.commons.beanutils2.Converter} implementation that handles conversion
@@ -33,7 +33,7 @@ import org.apache.commons.beanutils2.converters.AbstractConverter;
  * @since 2.0
  * @see Enum
  */
-public final class EnumConverter<E extends Enum<E>> extends AbstractConverter<Enum<E>> {
+public final class EnumConverter<E extends Enum<E>> extends AbstractConverter {
 
     /**
      * Constructs a <b>java.lang.Enum</b> <i>Converter</i> that throws

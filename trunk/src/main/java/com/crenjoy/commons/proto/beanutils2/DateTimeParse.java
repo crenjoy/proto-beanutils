@@ -15,7 +15,7 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQueries;
 
-import org.apache.commons.beanutils2.ConversionException;
+import org.apache.commons.beanutils.ConversionException;
 
 /**
  * Date Time Format Parse Text.

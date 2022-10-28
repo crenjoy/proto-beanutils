@@ -6,7 +6,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-import org.apache.commons.beanutils2.PropertyUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
