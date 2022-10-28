@@ -9,7 +9,7 @@ package com.crenjoy.commons.proto.beanutils2;
 public class DurationUtils {
 
   /**
-   * Proto Duration -> Time Duration . Proto Duration (seconds,nanos) Symbolic.
+   * Proto Duration -> Time Duration . Proto Duration (seconds,nanos) Symbolic
    * consistency. Time Duration (seconds,nanos) nanos no Symbolic .
    */
   public static java.time.Duration toTime(com.google.protobuf.Duration src) {
@@ -21,7 +21,7 @@ public class DurationUtils {
   }
 
   /**
-   * Time Duration -> Proto Duration . Proto Duration (seconds,nanos) Symbolic.
+   * Time Duration -> Proto Duration . Proto Duration (seconds,nanos) Symbolic
    * consistency. Time Duration (seconds,nanos) nanos no Symbolic .
    */
   public static com.google.protobuf.Duration toProto(java.time.Duration src) {
