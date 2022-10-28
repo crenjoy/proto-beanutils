@@ -37,6 +37,15 @@ import org.apache.commons.beanutils2.converters.BigDecimalConverter;
  */
 public class ProtoConvertUtilsBean extends ConvertUtilsBean {
 
+  /**
+   * Get singleton instance
+   * 
+   * @return The singleton instance
+   */
+  protected static ProtoConvertUtilsBean getInstance() {
+    return (ProtoConvertUtilsBean) ProtoBeanUtilsBean.getInstance().getConvertUtils();
+  }
+
   @Override
   public void deregister() {
     super.deregister();

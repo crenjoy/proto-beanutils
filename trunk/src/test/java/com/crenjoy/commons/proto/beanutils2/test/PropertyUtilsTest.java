@@ -43,7 +43,8 @@ public class PropertyUtilsTest {
   @Order(3)
   public void testGetPropertyDescriptor()
       throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-    PropertyDescriptor des = PropertyUtils.getPropertyDescriptor(Basic1TestMsgBuilder.getMin(), "testDouble");
+    PropertyDescriptor des = PropertyUtils.getPropertyDescriptor(Basic1TestMsgBuilder.getMin(),
+        "testDouble");
     System.out.println(des);
   }
 
@@ -71,7 +72,8 @@ public class PropertyUtilsTest {
   @Order(6)
   public void testGetPropertyEditorClass()
       throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-    Class<?> clazz = PropertyUtils.getPropertyEditorClass(Basic1TestMsgBuilder.getMax(), "testDouble");
+    Class<?> clazz = PropertyUtils.getPropertyEditorClass(Basic1TestMsgBuilder.getMax(),
+        "testDouble");
     System.out.println(clazz);
   }
 
@@ -118,6 +120,20 @@ public class PropertyUtilsTest {
     System.out.println(obj);
   }
 
-  
+  @Test
+  @Order(11)
+  public void testWriteMessageProperty()
+      throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    Basic1TestMessage.Builder builder = Basic1TestMsgBuilder.getMax().toBuilder();
+    PropertyDescriptor des = PropertyUtils.getPropertyDescriptor(builder, "testDouble");
+    System.out.println(des);
+    boolean write = PropertyUtils.isWriteable(builder, "testDouble");
+    System.out.println(write);
+    if (write) {
+      PropertyUtils.setSimpleProperty(builder, "testDouble", 11.23f);
+    }
+    Object obj = PropertyUtils.getSimpleProperty(builder, "testDouble");
+    System.out.println(obj);
+  }
 
 }

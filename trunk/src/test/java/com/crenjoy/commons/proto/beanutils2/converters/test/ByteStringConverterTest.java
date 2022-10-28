@@ -8,9 +8,7 @@ import com.crenjoy.commons.proto.beanutils2.converters.ByteArrayConverter;
 import com.crenjoy.commons.proto.beanutils2.converters.ByteStringConverter;
 import com.google.protobuf.ByteString;
 
-import org.apache.commons.beanutils2.ConvertUtils;
 import org.apache.commons.beanutils2.Converter;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,35 +19,30 @@ import org.junit.jupiter.api.Test;
  */
 public class ByteStringConverterTest {
 
-  @BeforeAll
-  public static void register() {
-    ProtoConvertUtils.init();
-  }
-
   @SuppressWarnings("rawtypes")
   @Test
   public void testToByteString() {
-    Converter c = ConvertUtils.lookup(ByteString.class);
+    Converter c = ProtoConvertUtils.lookup(ByteString.class);
     assertEquals(c.getClass(), ByteStringConverter.class);
-    c = ConvertUtils.lookup(byte[].class, ByteString.class);
+    c = ProtoConvertUtils.lookup(byte[].class, ByteString.class);
     assertEquals(c.getClass(), ByteStringConverter.class);
 
     byte[] bytes = "1234567890".getBytes();
-    ByteString bs = (ByteString) ConvertUtils.convert(bytes, ByteString.class);
+    ByteString bs = (ByteString) ProtoConvertUtils.convert(bytes, ByteString.class);
     assertArrayEquals(bytes, bs.toByteArray());
   }
 
   @SuppressWarnings("rawtypes")
   @Test
   public void testFromByteString() {
-    Converter c = ConvertUtils.lookup(byte[].class);
+    Converter c = ProtoConvertUtils.lookup(byte[].class);
     assertEquals(c.getClass(), ByteArrayConverter.class);
-    c = ConvertUtils.lookup(ByteString.class, byte[].class);
+    c = ProtoConvertUtils.lookup(ByteString.class, byte[].class);
     assertEquals(c.getClass(), ByteArrayConverter.class);
 
     byte[] bytes = "0123456789".getBytes();
 
-    byte[] bs = (byte[]) ConvertUtils.convert(ByteString.copyFrom(bytes), byte[].class);
+    byte[] bs = (byte[]) ProtoConvertUtils.convert(ByteString.copyFrom(bytes), byte[].class);
     assertArrayEquals(bytes, bs);
 
   }
