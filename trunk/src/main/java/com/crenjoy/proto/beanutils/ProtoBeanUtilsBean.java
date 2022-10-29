@@ -24,7 +24,7 @@ public class ProtoBeanUtilsBean extends BeanUtilsBean {
   /**
    * Contains {@code BeanUtilsBean} instances indexed by context classloader.
    */
-  private static final ContextClassLoaderLocal<ProtoBeanUtilsBean> PROTO_BEANS_BY_CLASSLOADER = new ContextClassLoaderLocal<>() {
+  private static final ContextClassLoaderLocal<ProtoBeanUtilsBean> PROTO_BEANS_BY_CLASSLOADER = new ContextClassLoaderLocal<ProtoBeanUtilsBean>() {
     // Creates the default instance used when the context classloader is unavailable
     @Override
     protected ProtoBeanUtilsBean initialValue() {
