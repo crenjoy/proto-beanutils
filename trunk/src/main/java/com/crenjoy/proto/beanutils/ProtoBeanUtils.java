@@ -19,7 +19,6 @@ package com.crenjoy.proto.beanutils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
-
 import org.apache.commons.beanutils.BeanUtilsBean;
 
 /**
@@ -74,7 +73,7 @@ public class ProtoBeanUtils {
    * <p>
    * For more details see {@code BeanUtilsBean}.
    * </p>
-   * 
+   *
    * @param dest Destination bean whose properties are modified
    * @param orig Origin bean whose properties are retrieved
    *
@@ -437,9 +436,9 @@ public class ProtoBeanUtils {
     return ProtoBeanUtilsBean.getInstance().initCause(throwable, cause);
   }
 
-  /** An empty class array */
+  /** An empty class array. */
   static final Class<?>[] EMPTY_CLASS_ARRAY = {};
 
-  /** An empty object array */
+  /** An empty object array. */
   static final Object[] EMPTY_OBJECT_ARRAY = {};
 }

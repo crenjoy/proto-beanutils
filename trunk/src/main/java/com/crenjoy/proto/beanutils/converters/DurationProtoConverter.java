@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DurationUtils;
 import com.google.protobuf.Duration;
 import com.google.protobuf.util.Durations;
-
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
@@ -88,13 +88,11 @@ public final class DurationProtoConverter extends AbstractConverter {
     // Proto Duration -> time Duration
     if (Duration.class.equals(type) && java.time.Duration.class.equals(sourceType)) {
       java.time.Duration d = (java.time.Duration) value;
-      return type
-          .cast(DurationUtils.toProto(d));
+      return type.cast(DurationUtils.toProto(d));
     }
     if (Duration.class.equals(type)) {
       java.time.Duration s = java.time.Duration.parse(String.valueOf(value));
-      return type
-          .cast(DurationUtils.toProto(s));
+      return type.cast(DurationUtils.toProto(s));
     }
     throw conversionException(type, value);
   }

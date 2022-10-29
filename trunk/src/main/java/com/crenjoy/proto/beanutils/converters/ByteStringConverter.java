@@ -1,9 +1,7 @@
 package com.crenjoy.proto.beanutils.converters;
 
 import com.google.protobuf.ByteString;
-
 import java.util.Objects;
-
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 import org.apache.commons.logging.Log;

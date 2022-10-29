@@ -14,16 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.crenjoy.proto.beanutils.converters;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * {@link org.apache.commons.beanutils2.Converter} implementation that handles conversion
- * to and from <b>java.lang.Enum</b> objects.
+ * {@link org.apache.commons.beanutils2.Converter} implementation that handles
+ * conversion to and from <b>java.lang.Enum</b> objects.
  * <p>
  * Can be configured to either return a <i>default value</i> or throw a
  * {@code ConversionException} if a conversion error occurs.
@@ -35,91 +35,94 @@ import org.apache.commons.beanutils.converters.AbstractConverter;
  */
 public final class EnumConverter<E extends Enum<E>> extends AbstractConverter {
 
-    /**
-     * Constructs a <b>java.lang.Enum</b> <i>Converter</i> that throws
-     * a {@code ConversionException} if an error occurs.
-     */
-    public EnumConverter() {
-    }
+  /**
+   * Constructs a <b>java.lang.Enum</b> <i>Converter</i> that throws a
+   * {@code ConversionException} if an error occurs.
+   */
+  public EnumConverter() {
+  }
 
-    /**
-     * Constructs a <b>java.lang.Enum</b> <i>Converter</i> that returns
-     * a default value if an error occurs.
-     *
-     * @param defaultValue The default value to be returned
-     * if the value to be converted is missing or an error
-     * occurs converting the value.
-     */
-    public EnumConverter(final Enum<E> defaultValue) {
-        super(defaultValue);
-    }
+  /**
+   * Constructs a <b>java.lang.Enum</b> <i>Converter</i> that returns a default
+   * value if an error occurs.
+   *
+   * @param defaultValue The default value to be returned if the value to be
+   *                     converted is missing or an error occurs converting the
+   *                     value.
+   */
+  public EnumConverter(final Enum<E> defaultValue) {
+    super(defaultValue);
+  }
 
-    /**
-     * Gets the default type this {@code Converter} handles.
-     *
-     * @return The default type this {@code Converter} handles.
-     * @since 2.0
-     */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    @Override
-    protected Class<Enum<E>> getDefaultType() {
-        return (Class) Enum.class;
-    }
+  /**
+   * Gets the default type this {@code Converter} handles.
+   *
+   * @return The default type this {@code Converter} handles.
+   * @since 2.0
+   */
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @Override
+  protected Class<Enum<E>> getDefaultType() {
+    return (Class) Enum.class;
+  }
 
-    /**
-     * <p>Converts a java.lang.Enum or object into a String.</p>
-     *
-     * @param <R> Target type of the conversion.
-     * @param type Data type to which this value should be converted.
-     * @param value The input value to be converted.
-     * @return The converted value.
-     * @throws Throwable if an error occurs converting to the specified type
-     * @since 2.0
-     */
-    @SuppressWarnings({"rawtypes"})
-    @Override
-    protected <R> R convertToType(final Class<R> type, final Object value) throws Throwable {
-        if (Enum.class.isAssignableFrom(type)) {
-            final String enumValue = String.valueOf(value);
-            final R[] constants = type.getEnumConstants();
-            if (constants == null) {
-                throw conversionException(type, value);
-            }
-            //Enum number
-            if (isNumeric(enumValue)) {
-                Integer enumNumber= Integer.valueOf(enumValue);
-                if (enumNumber>=0 && enumNumber < constants.length) {
-                    return constants[enumNumber];
-                }
-                throw conversionException(type, value);
-            }
-            //Enum String
-            for (final R candidate : constants) {
-                if (((Enum)candidate).name().equalsIgnoreCase(enumValue)) {
-                    return candidate;
-                }
-            }
-        }
-        //Enum to Integer Enum Ordinal
-        if (value instanceof Enum && type.equals(Integer.class)) {
-            return type.cast(((Enum)value).ordinal());
-        }
-
+  /**
+   * <p>
+   * Converts a java.lang.Enum or object into a String.
+   * </p>
+   *
+   * @param <R>   Target type of the conversion.
+   * @param type  Data type to which this value should be converted.
+   * @param value The input value to be converted.
+   * @return The converted value.
+   * @throws Throwable if an error occurs converting to the specified type
+   * @since 2.0
+   */
+  @SuppressWarnings({ "rawtypes" })
+  @Override
+  protected <R> R convertToType(final Class<R> type, final Object value) throws Throwable {
+    if (Enum.class.isAssignableFrom(type)) {
+      final String enumValue = String.valueOf(value);
+      final R[] constants = type.getEnumConstants();
+      if (constants == null) {
         throw conversionException(type, value);
+      }
+      // Enum number
+      if (isNumeric(enumValue)) {
+        Integer enumNumber = Integer.valueOf(enumValue);
+        if (enumNumber >= 0 && enumNumber < constants.length) {
+          return constants[enumNumber];
+        }
+        throw conversionException(type, value);
+      }
+      // Enum String
+      for (final R candidate : constants) {
+        if (((Enum) candidate).name().equalsIgnoreCase(enumValue)) {
+          return candidate;
+        }
+      }
     }
-    
-    /**
-     * String is digit ?
-     * @param str String
-     * @return true/false
-     */
-    public boolean isNumeric(String str){ 
-        Pattern pattern = Pattern.compile("[0-9]*"); 
-        Matcher isNum = pattern.matcher(str);
-        if( !isNum.matches() ){
-            return false; 
-        } 
-        return true; 
+    // Enum to Integer Enum Ordinal
+    if (value instanceof Enum && type.equals(Integer.class)) {
+      return type.cast(((Enum) value).ordinal());
     }
+
+    throw conversionException(type, value);
+  }
+
+  /**
+   * String is digit ?.
+   *
+   * @param str String
+   * @return true/false
+   */
+  public boolean isNumeric(String str) {
+    Pattern pattern = Pattern.compile("[0-9]*");
+    Matcher isNum = pattern.matcher(str);
+    if (!isNum.matches()) {
+      return false;
+    }
+    return true;
+  }
 
 }

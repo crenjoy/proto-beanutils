@@ -1,5 +1,5 @@
-package com.crenjoy.proto.beanutils.test;
 
+package com.crenjoy.proto.beanutils.test;
 
 import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
 import crenjoy.protobuf.Basic1TestMessage;
@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-
 /**
  * PropertyUtils Test.
  *
@@ -25,7 +24,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 public class PropertyUtilsTest {
 
   private Log log = LogFactory.getLog(PropertyUtilsTest.class);
-  
+
   @Test
   @Order(1)
   public void testDescribe()

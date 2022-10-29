@@ -2,7 +2,6 @@ package com.crenjoy.proto.beanutils.converters;
 
 import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
-
 import java.time.format.DateTimeFormatter;
 
 /**

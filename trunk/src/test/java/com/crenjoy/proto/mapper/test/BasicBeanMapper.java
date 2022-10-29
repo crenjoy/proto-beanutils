@@ -21,5 +21,7 @@ public interface BasicBeanMapper extends BeanMapper {
   Basic1Test1Bean toBean1(Basic1TestMessage basicMsg);
 
   Basic1Test2Bean toBean2(Basic1TestMessage basicMsg);
+  
+  
 
 }

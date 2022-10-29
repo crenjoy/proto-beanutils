@@ -2,7 +2,7 @@ package com.crenjoy.proto.beanutils;
 
 /**
  * Time Duration <-> Proto Duration.
- * 
+ *
  * @author CGD
  *
  */

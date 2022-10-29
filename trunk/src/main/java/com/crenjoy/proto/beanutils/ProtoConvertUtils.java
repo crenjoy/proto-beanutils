@@ -2,7 +2,6 @@ package com.crenjoy.proto.beanutils;
 
 import java.util.Locale;
 import java.util.TimeZone;
-
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;

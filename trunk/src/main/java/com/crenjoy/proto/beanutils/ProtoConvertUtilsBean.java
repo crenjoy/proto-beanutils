@@ -2,6 +2,8 @@ package com.crenjoy.proto.beanutils;
 
 import com.crenjoy.proto.beanutils.converters.ByteArrayConverter;
 import com.crenjoy.proto.beanutils.converters.ByteStringConverter;
+import com.crenjoy.proto.beanutils.converters.CalendarConverter;
+import com.crenjoy.proto.beanutils.converters.DateConverter;
 import com.crenjoy.proto.beanutils.converters.DurationConverter;
 import com.crenjoy.proto.beanutils.converters.DurationProtoConverter;
 import com.crenjoy.proto.beanutils.converters.EnumConverter;
@@ -11,11 +13,14 @@ import com.crenjoy.proto.beanutils.converters.LocalDateTimeConverter;
 import com.crenjoy.proto.beanutils.converters.LocalTimeConverter;
 import com.crenjoy.proto.beanutils.converters.OffsetDateTimeConverter;
 import com.crenjoy.proto.beanutils.converters.OffsetTimeConverter;
+import com.crenjoy.proto.beanutils.converters.PeriodConverter;
+import com.crenjoy.proto.beanutils.converters.SqlDateConverter;
+import com.crenjoy.proto.beanutils.converters.SqlTimeConverter;
+import com.crenjoy.proto.beanutils.converters.SqlTimestampConverter;
 import com.crenjoy.proto.beanutils.converters.TimestampConverter;
 import com.crenjoy.proto.beanutils.converters.ZonedDateTimeConverter;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Timestamp;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -23,8 +28,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.Period;
 import java.time.ZonedDateTime;
-
+import java.util.Calendar;
+import java.util.Date;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.beanutils.converters.BigDecimalConverter;
@@ -38,8 +45,8 @@ import org.apache.commons.beanutils.converters.BigDecimalConverter;
 public class ProtoConvertUtilsBean extends ConvertUtilsBean {
 
   /**
-   * Get singleton instance
-   * 
+   * Get singleton instance.
+   *
    * @return The singleton instance
    */
   protected static ProtoConvertUtilsBean getInstance() {
@@ -49,12 +56,13 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
   @Override
   public void deregister() {
     super.deregister();
+    registerDate();
     registerDateTime();
     registerOther();
   }
 
   /**
-   * Register DateTime
+   * Register DateTime.
    */
   protected void registerDateTime() {
     register(new InstantConverter(), Instant.class);
@@ -65,10 +73,22 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
     register(new OffsetTimeConverter(), OffsetTime.class);
     register(new TimestampConverter(), Timestamp.class);
     register(new ZonedDateTimeConverter(), ZonedDateTime.class);
+    register(new PeriodConverter(), Period.class);
+  }
+  
+  /**
+   * Register Date.
+   */
+  protected void registerDate() {
+    register(new CalendarConverter(), Calendar.class);
+    register(new DateConverter(), Date.class);
+    register(new SqlDateConverter(), java.sql.Date.class);
+    register(new SqlTimeConverter(), java.sql.Time.class);
+    register(new SqlTimestampConverter(), java.sql.Timestamp.class);
   }
 
   /**
-   * Register Other
+   * Register Other.
    */
   protected void registerOther() {
     BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);

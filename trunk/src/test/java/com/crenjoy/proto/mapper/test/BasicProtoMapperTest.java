@@ -1,13 +1,12 @@
-package com.crenjoy.proto.mapper.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package com.crenjoy.proto.mapper.test;
 
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1Bean;
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1BeanBuilder;
 import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
-
 import crenjoy.protobuf.Basic1TestMessage;
 import java.lang.reflect.InvocationTargetException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -29,7 +28,7 @@ public class BasicProtoMapperTest {
       InvocationTargetException, NoSuchMethodException {
     Basic1Test1Bean actual = new Basic1Test1Bean();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
-    assertEquals(expected, Basic1TestMsgBuilder.getEmpty());
+    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getEmpty());
   }
 
   /**
@@ -40,7 +39,7 @@ public class BasicProtoMapperTest {
       InvocationTargetException, NoSuchMethodException {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMin();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
-    assertEquals(expected, Basic1TestMsgBuilder.getMin());
+    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getMin());
   }
 
   /**
@@ -51,9 +50,7 @@ public class BasicProtoMapperTest {
       InvocationTargetException, NoSuchMethodException {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMax();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
-    assertEquals(expected, Basic1TestMsgBuilder.getMax());
+    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getMax());
   }
-  
-  
 
 }
