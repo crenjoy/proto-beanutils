@@ -30,6 +30,7 @@ message Basic2TestMessage{
    string    test_string = 1;
    int32     test_int32  = 2;
    bool      test_bool   = 3;
+   float     test_float   = 4;
 }
 
 message BasicTestMessageMap{
@@ -52,12 +53,14 @@ message TestMessageList {
 message NestedTestMessage {
    string    test_string = 1;
    double    test_double = 2;
-   float     test_float  = 3;
+   bool      test_bool  = 3;
    Basic2TestMessage test_basic_bean = 4;
    map<string, string> test_str_map = 5;
    repeated  string test_str_list = 6;
    map<string, Basic2TestMessage> test_basic_map = 7;
    repeated  Basic2TestMessage test_basic_list = 8;
+   TestMessageList test_message_list = 9;
+   TestMessageMap  test_message_map = 10;
 }
 
 //Proto Message Convert POJO Bean.

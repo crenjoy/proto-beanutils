@@ -8,20 +8,20 @@ import com.google.protobuf.ByteString;
  * @author CGD
  *
  */
-public class Basic1Test1BeanBuilder {
+public class Basic1TestBeanBuilder {
 
   /**
    * Empty Bean.
    */
-  public static Basic1Test1Bean getEmpty() {
-    return new Basic1Test1Bean();
+  public static Basic1TestBean getEmpty() {
+    return new Basic1TestBean();
   }
 
   /**
    * Default Value.
    */
-  public static Basic1Test1Bean getDefault() {
-    Basic1Test1Bean msg = new Basic1Test1Bean();
+  public static Basic1TestBean getDefault() {
+    Basic1TestBean msg = new Basic1TestBean();
     msg.setTestDouble(0.0d);
     msg.setTestFloat(0.0f);
     msg.setTestInt32(0);
@@ -43,8 +43,8 @@ public class Basic1Test1BeanBuilder {
   /**
    * Min Bean.
    */
-  public static Basic1Test1Bean getMin() {
-    Basic1Test1Bean msg = new Basic1Test1Bean();
+  public static Basic1TestBean getMin() {
+    Basic1TestBean msg = new Basic1TestBean();
     msg.setTestDouble(Double.MIN_VALUE);
     msg.setTestFloat(Float.MIN_VALUE);
     msg.setTestInt32(Integer.MIN_VALUE);
@@ -66,8 +66,8 @@ public class Basic1Test1BeanBuilder {
   /**
    * Max Bean.
    */
-  public static Basic1Test1Bean getMax() {
-    Basic1Test1Bean msg = new Basic1Test1Bean();
+  public static Basic1TestBean getMax() {
+    Basic1TestBean msg = new Basic1TestBean();
     msg.setTestDouble(Double.MAX_VALUE);
     msg.setTestFloat(Float.MAX_VALUE);
     msg.setTestInt32(Integer.MAX_VALUE);

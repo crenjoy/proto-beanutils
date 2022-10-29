@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author CGD
  *
  */
-public class Basic1Test1Bean {
+public class Basic1TestBean {
 
   Double testDouble;
   Float testFloat;
@@ -169,7 +169,7 @@ public class Basic1Test1Bean {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    Basic1Test1Bean other = (Basic1Test1Bean) obj;
+    Basic1TestBean other = (Basic1TestBean) obj;
     return Objects.equals(testBool, other.testBool) && Arrays.equals(testBytes, other.testBytes)
         && Objects.equals(testDouble, other.testDouble)
         && Objects.equals(testFixed32, other.testFixed32)
