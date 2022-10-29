@@ -14,7 +14,7 @@ public class Basic1TestMsgBuilder {
   /**
    * Empty Message.
    */
-  public static Basic1TestMessage getEmpty() {
+  public static Basic1TestMessage getDefault() {
     return Basic1TestMessage.newBuilder().build();
   }
 

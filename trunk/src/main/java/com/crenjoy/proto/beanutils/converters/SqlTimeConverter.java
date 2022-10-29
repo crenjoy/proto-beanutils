@@ -41,6 +41,7 @@ public final class SqlTimeConverter extends DateTimeConverter<Time> {
    * {@code ConversionException} if an error occurs.
    */
   public SqlTimeConverter() {
+    this(null);
   }
 
   /**

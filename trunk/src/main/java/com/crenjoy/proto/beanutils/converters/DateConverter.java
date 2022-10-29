@@ -41,6 +41,7 @@ public final class DateConverter extends DateTimeConverter<Date> {
    * {@code ConversionException} if an error occurs.
    */
   public DateConverter() {
+    this(null);
   }
 
   /**

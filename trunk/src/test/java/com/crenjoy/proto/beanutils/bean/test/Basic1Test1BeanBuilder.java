@@ -20,7 +20,7 @@ public class Basic1Test1BeanBuilder {
   /**
    * Default Value.
    */
-  public static Basic1Test1Bean getDefaultValue() {
+  public static Basic1Test1Bean getDefault() {
     Basic1Test1Bean msg = new Basic1Test1Bean();
     msg.setTestDouble(0.0d);
     msg.setTestFloat(0.0f);

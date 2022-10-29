@@ -8,6 +8,7 @@ import crenjoy.protobuf.Basic1TestMessage;
 import java.lang.reflect.InvocationTargetException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -24,17 +25,19 @@ public class BasicProtoMapperTest {
    * null --> Default.
    */
   @Test
+  @Order(1)
   public void test1ToMessage() throws IllegalAccessException, InstantiationException,
       InvocationTargetException, NoSuchMethodException {
-    Basic1Test1Bean actual = new Basic1Test1Bean();
+    Basic1Test1Bean actual = Basic1Test1BeanBuilder.getEmpty();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
-    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getEmpty());
+    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getDefault());
   }
 
   /**
    * Min --> Min.
    */
   @Test
+  @Order(2)
   public void test1ToMessageMin() throws IllegalAccessException, InstantiationException,
       InvocationTargetException, NoSuchMethodException {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMin();
@@ -46,11 +49,84 @@ public class BasicProtoMapperTest {
    * Max --> Max.
    */
   @Test
+  @Order(3)
   public void test1ToMessageMax() throws IllegalAccessException, InstantiationException,
       InvocationTargetException, NoSuchMethodException {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMax();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
     Assertions.assertEquals(expected, Basic1TestMsgBuilder.getMax());
+  }
+
+  /**
+   * Value Update Empty.
+   */
+  @Test
+  @Order(4)
+  public void testEmptyUpdateMessage1() throws IllegalAccessException, InstantiationException,
+      InvocationTargetException, NoSuchMethodException {
+    // Default Update Empty.
+    Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
+    Basic1Test1Bean actual = Basic1Test1BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Min Update Empty.
+    expected = Basic1TestMsgBuilder.getMin().toBuilder();
+    actual = Basic1Test1BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Max Update Empty.
+    expected = Basic1TestMsgBuilder.getMax().toBuilder();
+    actual = Basic1Test1BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+  }
+
+  /**
+   * Default Update Value.
+   */
+  @Test
+  @Order(5)
+  public void testDefaultUpdateMessage1() throws IllegalAccessException, InstantiationException,
+      InvocationTargetException, NoSuchMethodException {
+    // Default Update Default.
+    Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
+    Basic1Test1Bean actual = Basic1Test1BeanBuilder.getDefault();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Default Update Min.
+    expected = Basic1TestMsgBuilder.getDefault().toBuilder();
+    actual = Basic1Test1BeanBuilder.getMin();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getMin());
+
+    // Default Update Max.
+    expected = Basic1TestMsgBuilder.getDefault().toBuilder();
+    actual = Basic1Test1BeanBuilder.getMax();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getMax());
+  }
+
+  /**
+   * Value Update Default.
+   */
+  @Test
+  @Order(6)
+  public void testValueUpdateMessage1() throws IllegalAccessException, InstantiationException,
+      InvocationTargetException, NoSuchMethodException {
+    // Min Update Default.
+    Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getMin().toBuilder();
+    Basic1Test1Bean actual = Basic1Test1BeanBuilder.getDefault();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Max Update Default.
+    expected = Basic1TestMsgBuilder.getMax().toBuilder();
+    actual = Basic1Test1BeanBuilder.getDefault();
+    BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
   }
 
 }

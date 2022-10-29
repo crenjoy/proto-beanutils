@@ -1,3 +1,4 @@
+
 package com.crenjoy.proto.beanutils.bean.test;
 
 /**

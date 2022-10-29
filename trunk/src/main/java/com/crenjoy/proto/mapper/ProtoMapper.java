@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 
 /**
  * Target Proto Message Mapper.
+ * 1、Null Bean Update Value Message To Default Message .
  *
  * @author CGD
  *
@@ -53,6 +54,13 @@ public interface ProtoMapper {
    */
   default Double nullToProto(Double value) {
     return (null == value) ? Double.valueOf(0d) : value;
+  }
+  
+  /**
+   * Proto Double Not Null,Default 0.0.
+   */
+  default Boolean nullToProto(Boolean value) {
+    return (null == value) ? Boolean.FALSE : value;
   }
 
 }

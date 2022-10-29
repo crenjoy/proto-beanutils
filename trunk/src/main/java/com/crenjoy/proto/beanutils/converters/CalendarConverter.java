@@ -41,6 +41,7 @@ public final class CalendarConverter extends DateTimeConverter<Calendar> {
    * {@code ConversionException} if an error occurs.
    */
   public CalendarConverter() {
+    this(null);
   }
 
   /**
