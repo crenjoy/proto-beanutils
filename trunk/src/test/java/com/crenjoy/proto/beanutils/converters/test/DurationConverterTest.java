@@ -7,8 +7,6 @@ import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.crenjoy.proto.beanutils.converters.DurationConverter;
 import com.crenjoy.proto.beanutils.converters.DurationProtoConverter;
 import com.google.protobuf.util.Durations;
-
-import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +24,7 @@ public class DurationConverterTest {
     assertEquals(c.getClass(), DurationConverter.class);
 
     java.time.Duration actual = DurationUtils.toTime(Durations.MAX_VALUE);
-    java.time.Duration expected = (java.time.Duration) ConvertUtils
+    java.time.Duration expected = (java.time.Duration) ProtoConvertUtils
         .convert("PT87660000H0.999999999S", java.time.Duration.class);
     assertEquals(expected, actual);
 
@@ -43,7 +41,7 @@ public class DurationConverterTest {
     assertEquals(c.getClass(), DurationProtoConverter.class);
 
     com.google.protobuf.Duration actual = Durations.MAX_VALUE;
-    com.google.protobuf.Duration expected = (com.google.protobuf.Duration) ConvertUtils
+    com.google.protobuf.Duration expected = (com.google.protobuf.Duration) ProtoConvertUtils
         .convert("PT87660000H0.999999999S", com.google.protobuf.Duration.class);
     assertEquals(expected, actual);
 

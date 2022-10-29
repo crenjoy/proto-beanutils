@@ -3,9 +3,7 @@ package com.crenjoy.proto.beanutils.converters.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
-
 import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Test;
 
 /**

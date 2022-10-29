@@ -7,7 +7,6 @@ import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.crenjoy.proto.beanutils.converters.ByteArrayConverter;
 import com.crenjoy.proto.beanutils.converters.ByteStringConverter;
 import com.google.protobuf.ByteString;
-
 import org.apache.commons.beanutils.Converter;
 import org.junit.jupiter.api.Test;
 

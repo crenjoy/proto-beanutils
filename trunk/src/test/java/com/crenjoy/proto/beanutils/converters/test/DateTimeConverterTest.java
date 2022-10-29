@@ -3,7 +3,6 @@ package com.crenjoy.proto.beanutils.converters.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
-
 import java.lang.reflect.InvocationTargetException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -16,13 +15,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
 import java.util.Locale;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.Test;
 
 /**
- * 时间转换扩展
+ * 时间转换扩展.
  *
  * @author CGD
  *
@@ -32,7 +30,7 @@ public class DateTimeConverterTest {
   private Log log = LogFactory.getLog(DateTimeConverterTest.class);
 
   /**
-   * 测试Parse大小写敏感
+   * 测试Parse大小写敏感.
    */
   @Test
   public void testCaseSensitive() {
@@ -192,10 +190,7 @@ public class DateTimeConverterTest {
   }
 
   /**
-   * 日期类型默认通过ConvertUtils转换为String检查是否一致
-   * 
-   * @throws IllegalAccessException
-   * @throws InvocationTargetException
+   * 日期类型默认通过ConvertUtils转换为String检查是否一致.
    */
   @Test
   public void testConvertString() throws IllegalAccessException, InvocationTargetException {

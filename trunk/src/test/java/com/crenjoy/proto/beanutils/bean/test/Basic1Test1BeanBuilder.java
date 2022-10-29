@@ -11,6 +11,36 @@ import com.google.protobuf.ByteString;
 public class Basic1Test1BeanBuilder {
 
   /**
+   * Empty Bean.
+   */
+  public static Basic1Test1Bean getEmpty() {
+    return new Basic1Test1Bean();
+  }
+
+  /**
+   * Default Value.
+   */
+  public static Basic1Test1Bean getDefaultValue() {
+    Basic1Test1Bean msg = new Basic1Test1Bean();
+    msg.setTestDouble(0.0d);
+    msg.setTestFloat(0.0f);
+    msg.setTestInt32(0);
+    msg.setTestInt64(0L);
+    msg.setTestUint32(0);
+    msg.setTestUint64(0L);
+    msg.setTestSint32(0);
+    msg.setTestSint64(0L);
+    msg.setTestFixed32(0);
+    msg.setTestFixed64(0L);
+    msg.setTestSfixed32(0);
+    msg.setTestSfixed64(0L);
+    msg.setTestBool(false);
+    msg.setTestString("");
+    msg.setTestBytes(ByteString.EMPTY.toByteArray());
+    return msg;
+  }
+
+  /**
    * Min Bean.
    */
   public static Basic1Test1Bean getMin() {
@@ -28,8 +58,8 @@ public class Basic1Test1BeanBuilder {
     msg.setTestSfixed32(Integer.MIN_VALUE);
     msg.setTestSfixed64(Long.MIN_VALUE);
     msg.setTestBool(true);
-    msg.setTestString("Hello World!");
-    msg.setTestBytes(ByteString.fromHex("ABCDEF1234567890").toByteArray());
+    msg.setTestString("00000000");
+    msg.setTestBytes(ByteString.fromHex("00000000").toByteArray());
     return msg;
   }
 

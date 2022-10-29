@@ -2,7 +2,6 @@ package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
 import com.google.protobuf.Timestamp;
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,9 +12,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
-
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 import org.apache.commons.logging.Log;
@@ -33,8 +32,13 @@ import org.apache.commons.logging.LogFactory;
  * <li>{@code java.time.LocalTime}</li>
  * <li>{@code java.time.OffsetTime}</li>
  * <li>{@code java.lang.Long}</li>
+ * <li>{@code java.util.Date}</li>
+ * <li>{@code java.util.Calendar}</li>
+ * <li>{@code java.sql.Date}</li>
+ * <li>{@code java.sql.Time}</li>
+ * <li>{@code java.sql.Timestamp}</li>
  * </ul>
- * 
+ *
  * @author CGD
  *
  * @param <D> The default value type.
@@ -123,6 +127,24 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
       return toDate(targetType, longObj.longValue());
     }
 
+    // Handle java.sql.Timestamp
+    if (value instanceof java.sql.Timestamp) {
+      final java.sql.Timestamp timestamp = (java.sql.Timestamp) value;
+      return toDate(targetType, timestamp.getTime() / 1000, timestamp.getNanos());
+    }
+
+    // Handle Date (includes java.sql.Time)
+    if (value instanceof Date) {
+      final Date date = (Date) value;
+      return toDate(targetType, date.getTime());
+    }
+
+    // Handle java.sql.Date
+    if (value instanceof java.sql.Date) {
+      final java.sql.Date date = (java.sql.Date) value;
+      return toDate(targetType, date.getTime());
+    }
+
     // Convert all other types to String & handle
     final String stringValue = toTrim(value);
     if (stringValue.isEmpty()) {
@@ -165,16 +187,24 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
   }
 
   /**
-   * DateTime to String
+   * DateTime to String.
    */
   protected String convertToString(final Object value) {
     TemporalAccessor date = null;
-    // com.google.protobuf.Timestamp
     if (value instanceof Timestamp) {
+      // com.google.protobuf.Timestamp.
       final Timestamp timestamp = (Timestamp) value;
       date = toDate(Instant.class, timestamp.getSeconds(), timestamp.getNanos());
-    } else {
+    } else if (value instanceof TemporalAccessor) {
+      // Instant、LocalDateTime、LocalDate、LocalTime、ZonedDateTime、OffsetDateTime、OffsetTime.
       date = (TemporalAccessor) value;
+    } else {
+      // Date、java.sql.Date、java.sql.Time、java.sql.Timestamp、Calendar.
+      try {
+        date = convertToType(LocalDateTime.class, value);
+      } catch (Throwable e) {
+        getLog().debug(value + " to LocalDateTime Error : ", e);
+      }
     }
 
     String result = null;
@@ -263,6 +293,31 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
     if (type.equals(OffsetTime.class)) {
       final OffsetTime offsetTime = instant.atZone(getZoneId()).toOffsetDateTime().toOffsetTime();
       return type.cast(offsetTime);
+    }
+
+    // milliseconds
+    long value = seconds * 1000 + nanos / 1000000;
+
+    // java.util.Date
+    if (type.equals(Date.class)) {
+      return type.cast(new Date(value));
+    }
+
+    // java.sql.Date
+    if (type.equals(java.sql.Date.class)) {
+      return type.cast(new java.sql.Date(value));
+    }
+
+    // java.sql.Time
+    if (type.equals(java.sql.Time.class)) {
+      return type.cast(new java.sql.Time(value));
+    }
+
+    // java.sql.Timestamp
+    if (type.equals(java.sql.Timestamp.class)) {
+      java.sql.Timestamp stamp = new java.sql.Timestamp(seconds * 1000);
+      stamp.setNanos(nanos);
+      return type.cast(stamp);
     }
 
     final String msg = toString(getClass()) + " cannot handle conversion to '" + toString(type)

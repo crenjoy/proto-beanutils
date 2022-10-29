@@ -1,5 +1,8 @@
 package com.crenjoy.proto.beanutils.bean.test;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Basic Test Bean.
  *
@@ -144,4 +147,43 @@ public class Basic1Test1Bean {
     this.testBytes = testBytes;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + Arrays.hashCode(testBytes);
+    result = prime * result + Objects.hash(testBool, testDouble, testFixed32, testFixed64,
+        testFloat, testInt32, testInt64, testSfixed32, testSfixed64, testSint32, testSint64,
+        testString, testUint32, testUint64);
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Basic1Test1Bean other = (Basic1Test1Bean) obj;
+    return Objects.equals(testBool, other.testBool) && Arrays.equals(testBytes, other.testBytes)
+        && Objects.equals(testDouble, other.testDouble)
+        && Objects.equals(testFixed32, other.testFixed32)
+        && Objects.equals(testFixed64, other.testFixed64)
+        && Objects.equals(testFloat, other.testFloat) && Objects.equals(testInt32, other.testInt32)
+        && Objects.equals(testInt64, other.testInt64)
+        && Objects.equals(testSfixed32, other.testSfixed32)
+        && Objects.equals(testSfixed64, other.testSfixed64)
+        && Objects.equals(testSint32, other.testSint32)
+        && Objects.equals(testSint64, other.testSint64)
+        && Objects.equals(testString, other.testString)
+        && Objects.equals(testUint32, other.testUint32)
+        && Objects.equals(testUint64, other.testUint64);
+  }
+
+  
 }

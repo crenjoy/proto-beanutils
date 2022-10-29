@@ -3,7 +3,6 @@ package com.crenjoy.proto.beanutils.converters.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
-
 import org.junit.jupiter.api.Test;
 
 /**
@@ -49,6 +48,10 @@ public class EnumConverterTest {
     assertEquals(ps, PizzaStatus.ORDERED);
   }
 
+  /**
+   * Test Enum.
+   *
+   */
   public enum PizzaStatus {
     ORDERED, READY, DELIVERED;
   }

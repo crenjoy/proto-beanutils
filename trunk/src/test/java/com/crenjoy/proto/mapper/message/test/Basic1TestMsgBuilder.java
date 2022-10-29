@@ -12,6 +12,13 @@ import crenjoy.protobuf.Basic1TestMessage;
 public class Basic1TestMsgBuilder {
 
   /**
+   * Empty Message.
+   */
+  public static Basic1TestMessage getEmpty() {
+    return Basic1TestMessage.newBuilder().build();
+  }
+
+  /**
    * Min Message.
    */
   public static Basic1TestMessage getMin() {
@@ -29,8 +36,8 @@ public class Basic1TestMsgBuilder {
     msg.setTestSfixed32(Integer.MIN_VALUE);
     msg.setTestSfixed64(Long.MIN_VALUE);
     msg.setTestBool(true);
-    msg.setTestString("Hello World!");
-    msg.setTestBytes(ByteString.fromHex("ABCDEF1234567890"));
+    msg.setTestString("00000000");
+    msg.setTestBytes(ByteString.fromHex("00000000"));
     return msg.build();
   }
 
