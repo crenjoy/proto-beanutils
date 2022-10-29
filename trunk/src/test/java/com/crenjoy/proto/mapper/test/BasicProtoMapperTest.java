@@ -3,6 +3,8 @@ package com.crenjoy.proto.mapper.test;
 
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1Bean;
 import com.crenjoy.proto.beanutils.bean.test.Basic1Test1BeanBuilder;
+import com.crenjoy.proto.beanutils.bean.test.Basic1Test2Bean;
+import com.crenjoy.proto.beanutils.bean.test.Basic1Test2BeanBuilder;
 import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
 import crenjoy.protobuf.Basic1TestMessage;
 import java.lang.reflect.InvocationTargetException;
@@ -126,6 +128,44 @@ public class BasicProtoMapperTest {
     expected = Basic1TestMsgBuilder.getMax().toBuilder();
     actual = Basic1Test1BeanBuilder.getDefault();
     BasicProtoMapper.INSTANCE.updateMessage1(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+  }
+
+  /**
+   * Bean2 null --> Default.
+   */
+  @Test
+  @Order(7)
+  public void test2ToMessage() throws IllegalAccessException, InstantiationException,
+      InvocationTargetException, NoSuchMethodException {
+    Basic1Test2Bean actual = Basic1Test2BeanBuilder.getEmpty();
+    Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage2(actual);
+    Assertions.assertEquals(expected, Basic1TestMsgBuilder.getDefault());
+  }
+
+  /**
+   * Bean2 Value Update Empty.
+   */
+  @Test
+  @Order(8)
+  public void testEmptyUpdateMessage2() throws IllegalAccessException, InstantiationException,
+      InvocationTargetException, NoSuchMethodException {
+    // Default Update Empty.
+    Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
+    Basic1Test2Bean actual = Basic1Test2BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage2(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Min Update Empty.
+    expected = Basic1TestMsgBuilder.getMin().toBuilder();
+    actual = Basic1Test2BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage2(expected, actual);
+    Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
+
+    // Max Update Empty.
+    expected = Basic1TestMsgBuilder.getMax().toBuilder();
+    actual = Basic1Test2BeanBuilder.getEmpty();
+    BasicProtoMapper.INSTANCE.updateMessage2(expected, actual);
     Assertions.assertEquals(expected.build(), Basic1TestMsgBuilder.getDefault());
   }
 

@@ -1,6 +1,5 @@
-package com.crenjoy.proto.beanutils.converters.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package com.crenjoy.proto.beanutils.converters.test;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.Timestamp;
@@ -8,8 +7,10 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,12 +32,12 @@ public class TimestampConverterTest {
 
     String timestampStr = (String) ProtoConvertUtils.convert(timestamp, String.class);
     log.info("Timestamp: " + timestampStr);
-    assertEquals(DateTimeFormatter.ISO_INSTANT.format(instant), timestampStr);
+    Assertions.assertEquals(DateTimeFormatter.ISO_INSTANT.format(instant), timestampStr);
 
     // parse Timestamp
     Timestamp timestampParsed = (Timestamp) ProtoConvertUtils.convert(timestampStr,
         Timestamp.class);
-    assertEquals(timestamp, timestampParsed);
+    Assertions.assertEquals(timestamp, timestampParsed);
   }
 
   @Test
@@ -45,8 +46,8 @@ public class TimestampConverterTest {
     Timestamp timestamp = Timestamp.newBuilder().setSeconds(zdt1.toInstant().getEpochSecond())
         .setNanos(zdt1.toInstant().getNano()).build();
 
-    ZonedDateTime zdt = (ZonedDateTime) ProtoConvertUtils.convert(timestamp, ZonedDateTime.class);
-    assertEquals(zdt1, zdt);
+    Timestamp zdt = (Timestamp) ProtoConvertUtils.convert(zdt1, Timestamp.class);
+    Assertions.assertEquals(timestamp, zdt);
   }
 
   @Test
@@ -58,8 +59,28 @@ public class TimestampConverterTest {
     // Timestamp to ZonedDateTime
     ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
     ZonedDateTime zdt2 = (ZonedDateTime) ProtoConvertUtils.convert(timestamp, ZonedDateTime.class);
-    assertEquals(zdt, zdt2);
+    Assertions.assertEquals(zdt, zdt2);
     log.info("ZonedDateTime: " + zdt);
+  }
+
+  @Test
+  public void testFromDate() {
+    Date date = new Date();
+    Timestamp timestamp = Timestamp.newBuilder().setSeconds(date.toInstant().getEpochSecond())
+        .setNanos(date.toInstant().getNano()).build();
+
+    Timestamp zdt = (Timestamp) ProtoConvertUtils.convert(date, Timestamp.class);
+    Assertions.assertEquals(timestamp, zdt);
+  }
+
+  @Test
+  public void testToDate() {
+    Date date = new Date();
+    Timestamp timestamp = Timestamp.newBuilder().setSeconds(date.toInstant().getEpochSecond())
+        .setNanos(date.toInstant().getNano()).build();
+
+    Date zdt = (Date) ProtoConvertUtils.convert(timestamp, Date.class);
+    Assertions.assertEquals(date, zdt);
   }
 
 }
