@@ -24,6 +24,24 @@ public interface BasicProtoMapper extends ProtoMapper {
 
   Basic1TestMessage toMessage2(Basic1Test2Bean basicBean);
 
+  /**
+   * Bean Update Proto Message.
+   */
+  default Basic1TestMessage updateMsg1(Basic1TestMessage basicMsg, Basic1Test1Bean bean1) {
+    Basic1TestMessage.Builder builder = basicMsg.toBuilder();
+    updateMessage1(builder, bean1);
+    return builder.build();
+  }
+
+  /**
+   * Bean Update Proto Message.
+   */
+  default Basic1TestMessage updateMsg2(Basic1TestMessage basicMsg, Basic1Test2Bean bean2) {
+    Basic1TestMessage.Builder builder = basicMsg.toBuilder();
+    updateMessage2(builder, bean2);
+    return builder.build();
+  }
+
   void updateMessage1(@MappingTarget Basic1TestMessage.Builder basicMsg, Basic1Test1Bean bean1);
 
   void updateMessage2(@MappingTarget Basic1TestMessage.Builder basicMsg, Basic1Test2Bean bean2);
