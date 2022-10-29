@@ -28,8 +28,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(1)
-  public void test1ToMessage() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void test1ToMessage()  {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getEmpty();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
     Assertions.assertEquals(expected, Basic1TestMsgBuilder.getDefault());
@@ -40,8 +39,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(2)
-  public void test1ToMessageMin() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void test1ToMessageMin() {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMin();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
     Assertions.assertEquals(expected, Basic1TestMsgBuilder.getMin());
@@ -52,8 +50,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(3)
-  public void test1ToMessageMax() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void test1ToMessageMax() {
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getMax();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage1(actual);
     Assertions.assertEquals(expected, Basic1TestMsgBuilder.getMax());
@@ -64,8 +61,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(4)
-  public void testEmptyUpdateMessage1() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void testEmptyUpdateMessage1()  {
     // Default Update Empty.
     Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getEmpty();
@@ -90,8 +86,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(5)
-  public void testDefaultUpdateMessage1() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void testDefaultUpdateMessage1() {
     // Default Update Default.
     Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getDefault();
@@ -116,8 +111,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(6)
-  public void testValueUpdateMessage1() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void testValueUpdateMessage1()  {
     // Min Update Default.
     Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getMin().toBuilder();
     Basic1Test1Bean actual = Basic1Test1BeanBuilder.getDefault();
@@ -136,8 +130,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(7)
-  public void test2ToMessage() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void test2ToMessage() {
     Basic1Test2Bean actual = Basic1Test2BeanBuilder.getEmpty();
     Basic1TestMessage expected = BasicProtoMapper.INSTANCE.toMessage2(actual);
     Assertions.assertEquals(expected, Basic1TestMsgBuilder.getDefault());
@@ -148,8 +141,7 @@ public class BasicProtoMapperTest {
    */
   @Test
   @Order(8)
-  public void testEmptyUpdateMessage2() throws IllegalAccessException, InstantiationException,
-      InvocationTargetException, NoSuchMethodException {
+  public void testEmptyUpdateMessage2()  {
     // Default Update Empty.
     Basic1TestMessage.Builder expected = Basic1TestMsgBuilder.getDefault().toBuilder();
     Basic1Test2Bean actual = Basic1Test2BeanBuilder.getEmpty();
