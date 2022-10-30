@@ -15,8 +15,8 @@ public class Basic1TestBean {
   Float testFloat;
   Integer testInt32;
   Long testInt64;
-  Integer testUint32;
-  Long testUint64;
+  int testUint32;
+  long testUint64;
   Integer testSint32;
   Long testSint64;
   Integer testFixed32;
@@ -59,19 +59,19 @@ public class Basic1TestBean {
     this.testInt64 = testInt64;
   }
 
-  public Integer getTestUint32() {
+  public int getTestUint32() {
     return testUint32;
   }
 
-  public void setTestUint32(Integer testUint32) {
+  public void setTestUint32(int testUint32) {
     this.testUint32 = testUint32;
   }
 
-  public Long getTestUint64() {
+  public long getTestUint64() {
     return testUint64;
   }
 
-  public void setTestUint64(Long testUint64) {
+  public void setTestUint64(long testUint64) {
     this.testUint64 = testUint64;
   }
 

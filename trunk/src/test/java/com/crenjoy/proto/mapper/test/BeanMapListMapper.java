@@ -6,17 +6,18 @@ import com.crenjoy.proto.beanutils.bean.test.BasicTestBeanMap;
 import com.crenjoy.proto.mapper.BeanMapper;
 import crenjoy.protobuf.BasicTestMessageList;
 import crenjoy.protobuf.BasicTestMessageMap;
+import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 /**
  * Proto Message List Map To Bean List Map.
- * 1、
+ *
  * @author CGD
  *
  */
-@Mapper
+@Mapper(collectionMappingStrategy = CollectionMappingStrategy.TARGET_IMMUTABLE)
 public interface BeanMapListMapper extends BeanMapper {
 
   BeanMapListMapper INSTANCE = Mappers.getMapper(BeanMapListMapper.class);

@@ -9,8 +9,9 @@ import org.mapstruct.Mapper;
  * Target Proto Message Mapper. <br/>
  * 1、resolve,Null Bean Update Value Message To Default Message . <br/>
  * 2、No resolve,Map List NULL Value To Message Exception.<br/>
- * 3、No resolve,Map List Not Support Add Exception e.g:Collections.emptyMap()
- * Colletions.emptyList().<br/>
+ * 3、resolve,TARGET_IMMUTABLE. Map List Not Support Add Exception
+ * e.g:Collections.emptyMap() Colletions.emptyList() Arrays.asList("a") remove
+ * Unsupported .<br/>
  *
  * @author CGD
  *

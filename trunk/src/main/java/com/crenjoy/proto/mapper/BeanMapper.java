@@ -27,8 +27,4 @@ public interface BeanMapper {
     return (List<String>) value;
   }
 
-  default List<?> defaultToList(List<?> value) {
-    return value;
-  }
-
 }
