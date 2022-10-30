@@ -77,6 +77,7 @@ message ConvertTestMessage {
     int32    test_int_enum = 10;
     string   test_big_decimal = 11;
     string   test_big_integer = 12;
+    string   test_uuid = 13;
 }
 
 

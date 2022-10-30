@@ -3,6 +3,9 @@ package com.crenjoy.proto.mapper;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.LazyStringArrayList;
+import com.google.protobuf.ProtocolStringList;
+import java.util.List;
 import org.mapstruct.Mapper;
 
 /**
@@ -24,6 +27,13 @@ public interface ProtoMapper {
    */
   default ByteString fromByteArray(byte[] value) {
     return ProtoConvertUtils.convert(value, ByteString.class);
+  }
+
+  /** List String To ProtocolStringList. */
+  default ProtocolStringList toListString(List<String> value) {
+    ProtocolStringList protoList = new LazyStringArrayList();
+    protoList.addAll(value);
+    return protoList;
   }
 
   /**
