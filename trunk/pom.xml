@@ -23,7 +23,7 @@
     <name>Proto BeanUtils</name>
     <properties>
         <java.version>1.8</java.version>
-        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.6.0-SNAPSHOT</org.mapstruct.version>
         <beanutils.version>1.9.4</beanutils.version>
         <!-- CURRENT_GRPC_VERSION -->
         <grpc.version>1.49.2</grpc.version>
@@ -125,6 +125,11 @@
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                     <fork>true</fork>
+                    <!-- 
+                    <compilerArgs>
+                        <compilerArg>-J-verbose</compilerArg>
+                        <compilerArg>-J-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</compilerArg>
+                    </compilerArgs>-->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>

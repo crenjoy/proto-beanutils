@@ -11,14 +11,14 @@ import java.util.List;
  */
 public class BasicTestBeanList {
 
-  List<String> testStrListList;
+  List<String> testStrList;
 
-  public List<String> getTestStrListList() {
-    return testStrListList;
+  public List<String> getTestStrList() {
+    return testStrList;
   }
 
-  public void setTestStrListList(List<String> testStrListList) {
-    this.testStrListList = testStrListList;
+  public void setTestStrList(List<String> testStrList) {
+    this.testStrList = testStrList;
   }
 
 }

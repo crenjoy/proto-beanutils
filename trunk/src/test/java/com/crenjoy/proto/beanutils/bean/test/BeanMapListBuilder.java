@@ -20,14 +20,14 @@ public class BeanMapListBuilder {
   /** Empty Map. */
   public static BasicTestBeanMap getMapEmpty() {
     BasicTestBeanMap map = new BasicTestBeanMap();
-    map.testStrMapMap = Collections.emptyMap();
+    map.testStrMap = Collections.emptyMap();
     return map;
   }
 
   /** Full Map. */
   public static BasicTestBeanMap getMapFull() {
     BasicTestBeanMap map = new BasicTestBeanMap();
-    map.testStrMapMap = new HashMap<String, String>() {
+    map.testStrMap = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
       {
         put("a", "a----a");
@@ -41,7 +41,7 @@ public class BeanMapListBuilder {
   /** Default Map. */
   public static BasicTestBeanMap getMapDefault() {
     BasicTestBeanMap map = new BasicTestBeanMap();
-    map.testStrMapMap = new HashMap<String, String>() {
+    map.testStrMap = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
 
       {
@@ -58,7 +58,7 @@ public class BeanMapListBuilder {
   /** Exception Map. */
   public static BasicTestBeanMap getMapException() {
     BasicTestBeanMap map = new BasicTestBeanMap();
-    map.testStrMapMap = new HashMap<String, String>() {
+    map.testStrMap = new HashMap<String, String>() {
       private static final long serialVersionUID = 1L;
 
       {
@@ -79,28 +79,28 @@ public class BeanMapListBuilder {
   /** Empty List. */
   public static BasicTestBeanList getListEmpty() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrListList = Collections.emptyList();
+    list.testStrList = Collections.emptyList();
     return list;
   }
 
   /** Full List. */
   public static BasicTestBeanList getListFull() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrListList = Arrays.asList("a", "b", "c");
+    list.testStrList = Arrays.asList("a", "b", "c");
     return list;
   }
   
   /** Default List. */
   public static BasicTestBeanList getListDefault() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrListList = Arrays.asList("a", "b", "c", "");
+    list.testStrList = Arrays.asList("a", "b", "c", "");
     return list;
   }
 
   /** Exception List. */
   public static BasicTestBeanList getListException() {
     BasicTestBeanList list = new BasicTestBeanList();
-    list.testStrListList = Arrays.asList("a", "b", "c", null);
+    list.testStrList = Arrays.asList("a", "b", "c", null);
     return list;
   }
 }

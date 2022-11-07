@@ -6,7 +6,6 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.LazyStringArrayList;
 import com.google.protobuf.ProtocolStringList;
 import java.util.List;
-import org.mapstruct.Mapper;
 
 /**
  * Target Proto Message Mapper. <br/>
@@ -19,7 +18,6 @@ import org.mapstruct.Mapper;
  * @author CGD
  *
  */
-@Mapper
 public interface ProtoMapper {
 
   /**

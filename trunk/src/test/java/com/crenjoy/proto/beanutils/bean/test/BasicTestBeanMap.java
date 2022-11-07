@@ -11,14 +11,14 @@ import java.util.Map;
  */
 public class BasicTestBeanMap {
 
-  Map<String, String> testStrMapMap;
+  Map<String, String> testStrMap;
 
-  public Map<String, String> getTestStrMapMap() {
-    return testStrMapMap;
+  public Map<String, String> getTestStrMap() {
+    return testStrMap;
   }
 
-  public void setTestStrMapMap(Map<String, String> testStrMapMap) {
-    this.testStrMapMap = testStrMapMap;
+  public void setTestStrMap(Map<String, String> testStrMap) {
+    this.testStrMap = testStrMap;
   }
 
 }

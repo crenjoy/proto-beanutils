@@ -5,7 +5,6 @@ import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.ProtocolStringList;
 import java.util.List;
-import org.mapstruct.Mapper;
 
 /**
  * target POJO Bean.
@@ -13,7 +12,6 @@ import org.mapstruct.Mapper;
  * @author CGD
  *
  */
-@Mapper
 public interface BeanMapper {
   /**
    * ByteString To byte[].
