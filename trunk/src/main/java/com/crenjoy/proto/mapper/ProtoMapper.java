@@ -10,10 +10,9 @@ import java.util.List;
 /**
  * Target Proto Message Mapper. <br/>
  * 1、resolve,Null Bean Update Value Message To Default Message . <br/>
- * 2、No resolve,Map List NULL Value To Message Exception.<br/>
- * 3、resolve,TARGET_IMMUTABLE. Map List Not Support Add Exception
- * e.g:Collections.emptyMap() Colletions.emptyList() Arrays.asList("a") remove
- * Unsupported .<br/>
+ * 2、No resolve,Map List NULL Value Update Message .<br/>
+ * 3、resolve,TARGET_IMMUTABLE. Map List e.g:Collections.emptyMap()
+ * Colletions.emptyList() Arrays.asList("a") remove Unsupported .<br/>
  *
  * @author CGD
  *
@@ -30,7 +29,7 @@ public interface ProtoMapper {
   /** List String To ProtocolStringList. */
   default ProtocolStringList toListString(List<String> value) {
     if (value == null || value.isEmpty()) {
-      return  new LazyStringArrayList();
+      return new LazyStringArrayList();
     }
     ProtocolStringList protoList = new LazyStringArrayList();
     protoList.addAll(value);
