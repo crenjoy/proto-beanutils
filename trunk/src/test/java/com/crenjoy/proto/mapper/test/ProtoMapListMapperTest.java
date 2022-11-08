@@ -184,7 +184,7 @@ public class ProtoMapListMapperTest {
     // @Mapper(collectionMappingStrategy =
     // CollectionMappingStrategy.TARGET_IMMUTABLE)
     // Assertions.assertThrows(UnsupportedOperationException.class, () -> {
-    BasicTestBeanList actual = BeanMapListBuilder.getListNull();
+    BasicTestBeanList actual = BeanMapListBuilder.getListEmpty();
     BasicTestMessageList expected = ProtoMapListBuilder.getListFull();
     expected =ProtoMapListMapper.INSTANCE.updateList(expected, actual);
     Assertions.assertEquals(expected.getTestStrListList(),

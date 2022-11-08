@@ -29,6 +29,9 @@ public interface ProtoMapper {
 
   /** List String To ProtocolStringList. */
   default ProtocolStringList toListString(List<String> value) {
+    if (value == null || value.isEmpty()) {
+      return  new LazyStringArrayList();
+    }
     ProtocolStringList protoList = new LazyStringArrayList();
     protoList.addAll(value);
     return protoList;
