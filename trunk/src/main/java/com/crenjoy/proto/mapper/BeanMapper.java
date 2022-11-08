@@ -4,6 +4,7 @@ package com.crenjoy.proto.mapper;
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.ProtocolStringList;
+
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ import java.util.List;
  * @author CGD
  *
  */
+//@Mapper(collectionMappingStrategy = CollectionMappingStrategy.TARGET_IMMUTABLE)
 public interface BeanMapper {
   /**
    * ByteString To byte[].
