@@ -1,8 +1,8 @@
 
 package com.crenjoy.proto.mapper.test;
 
-import com.crenjoy.proto.beanutils.bean.test.Basic1TestBean;
-import com.crenjoy.proto.beanutils.bean.test.Basic1TestBeanBuilder;
+import com.crenjoy.proto.mapper.bean.test.Basic1TestBean;
+import com.crenjoy.proto.mapper.bean.test.Basic1TestBeanBuilder;
 import com.crenjoy.proto.mapper.message.test.Basic1TestMsgBuilder;
 import crenjoy.protobuf.Basic1TestMessage;
 import org.junit.jupiter.api.Assertions;

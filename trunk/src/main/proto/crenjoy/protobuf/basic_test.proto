@@ -41,6 +41,10 @@ message BasicTestMessageList {
     repeated  string test_str_list = 1;
 }
 
+message BasicTestIntMessageList {
+    repeated int32 test_int_list = 1;
+}
+
 message TestMessageMap{
     map<string, Basic2TestMessage> test_basic_map = 1;
 }

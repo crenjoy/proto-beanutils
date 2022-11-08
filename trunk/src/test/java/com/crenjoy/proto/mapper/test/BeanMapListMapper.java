@@ -1,9 +1,10 @@
 
 package com.crenjoy.proto.mapper.test;
 
-import com.crenjoy.proto.beanutils.bean.test.BasicTestBeanList;
-import com.crenjoy.proto.beanutils.bean.test.BasicTestBeanMap;
 import com.crenjoy.proto.mapper.BeanMapper;
+import com.crenjoy.proto.mapper.bean.test.BasicTestBeanList;
+import com.crenjoy.proto.mapper.bean.test.BasicTestBeanMap;
+
 import crenjoy.protobuf.BasicTestMessageList;
 import crenjoy.protobuf.BasicTestMessageMap;
 import org.mapstruct.CollectionMappingStrategy;

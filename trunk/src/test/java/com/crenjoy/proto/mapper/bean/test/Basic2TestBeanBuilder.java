@@ -1,7 +1,5 @@
 
-package com.crenjoy.proto.beanutils.bean.test;
-
-import com.google.protobuf.ByteString;
+package com.crenjoy.proto.mapper.bean.test;
 
 /**
  * Basic1Test1Bean Builder.
@@ -10,6 +8,10 @@ import com.google.protobuf.ByteString;
  *
  */
 public class Basic2TestBeanBuilder {
+  
+  protected Basic2TestBeanBuilder() {
+    
+  }
 
   /**
    * Empty Bean.

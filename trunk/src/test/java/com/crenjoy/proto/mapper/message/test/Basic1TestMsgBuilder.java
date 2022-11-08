@@ -1,6 +1,7 @@
 package com.crenjoy.proto.mapper.message.test;
 
 import com.google.protobuf.ByteString;
+
 import crenjoy.protobuf.Basic1TestMessage;
 
 /**
@@ -10,6 +11,10 @@ import crenjoy.protobuf.Basic1TestMessage;
  *
  */
 public class Basic1TestMsgBuilder {
+  
+  protected Basic1TestMsgBuilder() {
+
+  }
 
   /**
    * Empty Message.

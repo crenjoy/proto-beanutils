@@ -1,5 +1,5 @@
 
-package com.crenjoy.proto.beanutils.bean.test;
+package com.crenjoy.proto.mapper.bean.test;
 
 import java.util.Map;
 

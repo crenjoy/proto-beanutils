@@ -1,6 +1,7 @@
 
 package com.crenjoy.proto.mapper.message.test;
 
+import crenjoy.protobuf.BasicTestIntMessageList;
 import crenjoy.protobuf.BasicTestMessageList;
 import crenjoy.protobuf.BasicTestMessageMap;
 import java.util.Arrays;
@@ -16,6 +17,10 @@ import java.util.Map;
  *
  */
 public class ProtoMapListBuilder {
+
+  protected ProtoMapListBuilder() {
+
+  }
 
   public static BasicTestMessageMap getMapNull() {
     return BasicTestMessageMap.newBuilder().build();
@@ -53,6 +58,15 @@ public class ProtoMapListBuilder {
     };
     BasicTestMessageMap map = BasicTestMessageMap.newBuilder().putAllTestStrMap(maps).build();
     return map;
+  }
+
+  public static BasicTestIntMessageList getIntListNull() {
+    return BasicTestIntMessageList.newBuilder().build();
+  }
+
+  public static BasicTestIntMessageList getIntListFull() {
+    List<Integer> list = Arrays.asList(1, 2, 3);
+    return BasicTestIntMessageList.newBuilder().addAllTestIntList(list).build();
   }
 
   public static BasicTestMessageList getListNull() {

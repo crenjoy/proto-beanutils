@@ -1,5 +1,5 @@
 
-package com.crenjoy.proto.beanutils.bean.test;
+package com.crenjoy.proto.mapper.bean.test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,6 +12,10 @@ import java.util.HashMap;
  *
  */
 public class BeanMapListBuilder {
+
+  protected BeanMapListBuilder() {
+
+  }
 
   public static BasicTestBeanMap getMapNull() {
     return new BasicTestBeanMap();
@@ -37,7 +41,7 @@ public class BeanMapListBuilder {
     };
     return map;
   }
-  
+
   /** Default Map. */
   public static BasicTestBeanMap getMapDefault() {
     BasicTestBeanMap map = new BasicTestBeanMap();
@@ -72,6 +76,24 @@ public class BeanMapListBuilder {
     return map;
   }
 
+  public static BasicTestIntBeanList getIntListNull() {
+    return new BasicTestIntBeanList();
+  }
+
+  /** Empty List. */
+  public static BasicTestIntBeanList getIntListEmpty() {
+    BasicTestIntBeanList list = new BasicTestIntBeanList();
+    list.testIntList = Collections.emptyList();
+    return list;
+  }
+
+  /** Full List. */
+  public static BasicTestIntBeanList getIntListFull() {
+    BasicTestIntBeanList list = new BasicTestIntBeanList();
+    list.testIntList = Arrays.asList(1, 2, 3);
+    return list;
+  }
+
   public static BasicTestBeanList getListNull() {
     return new BasicTestBeanList();
   }
@@ -89,7 +111,7 @@ public class BeanMapListBuilder {
     list.testStrList = Arrays.asList("a", "b", "c");
     return list;
   }
-  
+
   /** Default List. */
   public static BasicTestBeanList getListDefault() {
     BasicTestBeanList list = new BasicTestBeanList();

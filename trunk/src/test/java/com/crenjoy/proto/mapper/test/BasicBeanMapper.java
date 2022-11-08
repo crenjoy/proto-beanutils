@@ -1,8 +1,9 @@
 
 package com.crenjoy.proto.mapper.test;
 
-import com.crenjoy.proto.beanutils.bean.test.Basic1TestBean;
 import com.crenjoy.proto.mapper.BeanMapper;
+import com.crenjoy.proto.mapper.bean.test.Basic1TestBean;
+
 import crenjoy.protobuf.Basic1TestMessage;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
