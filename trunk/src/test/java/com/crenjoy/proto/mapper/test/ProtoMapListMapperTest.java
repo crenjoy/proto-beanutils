@@ -1,4 +1,4 @@
-
+ 
 package com.crenjoy.proto.mapper.test;
 
 import com.crenjoy.proto.mapper.bean.test.BasicTestBeanList;
@@ -23,7 +23,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * @author CGD
  *
  */
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)  
 public class ProtoMapListMapperTest {
 
   // Null Msg Map --> Empty Bean Map

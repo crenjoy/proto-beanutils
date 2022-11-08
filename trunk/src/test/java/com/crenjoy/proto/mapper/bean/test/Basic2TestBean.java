@@ -11,10 +11,10 @@ import java.util.Objects;
  */
 public class Basic2TestBean {
 
-  String testString;
-  Integer testInt32;
-  Boolean testBool;
-  Float testFloat;
+  String testString = "";
+  int testInt32;
+  boolean testBool;
+  float testFloat;
 
   public String getTestString() {
     return testString;

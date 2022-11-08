@@ -13,4 +13,12 @@ public class TestBeanMap {
 
   Map<String, Basic2TestBean> testBasicMap;
 
+  public Map<String, Basic2TestBean> getTestBasicMap() {
+    return testBasicMap;
+  }
+
+  public void setTestBasicMap(Map<String, Basic2TestBean> testBasicMap) {
+    this.testBasicMap = testBasicMap;
+  }
+
 }

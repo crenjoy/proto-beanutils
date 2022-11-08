@@ -5,9 +5,11 @@ import com.crenjoy.proto.mapper.ProtoMapper;
 import com.crenjoy.proto.mapper.bean.test.BasicTestBeanList;
 import com.crenjoy.proto.mapper.bean.test.BasicTestBeanMap;
 import com.crenjoy.proto.mapper.bean.test.BasicTestIntBeanList;
+
 import crenjoy.protobuf.BasicTestIntMessageList;
 import crenjoy.protobuf.BasicTestMessageList;
 import crenjoy.protobuf.BasicTestMessageMap;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
