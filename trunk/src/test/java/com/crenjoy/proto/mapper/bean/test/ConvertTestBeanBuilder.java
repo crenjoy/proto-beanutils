@@ -2,7 +2,6 @@
 package com.crenjoy.proto.mapper.bean.test;
 
 import crenjoy.protobuf.TestEnum;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.Duration;
@@ -15,6 +14,10 @@ import java.time.OffsetTime;
 import java.util.UUID;
 
 public class ConvertTestBeanBuilder {
+
+  public static ConvertTestBean getNull() {
+    return new ConvertTestBean();
+  }
 
   public static ConvertTestBean getEmpty() {
     ConvertTestBean bean = new ConvertTestBean();
@@ -60,7 +63,7 @@ public class ConvertTestBeanBuilder {
     bean.setTestBigDecimal(BigDecimal.valueOf(Double.MAX_VALUE));
     bean.setTestDoubleBigDecimal(BigDecimal.valueOf(Double.MAX_VALUE));
     bean.setTestBigInteger(BigInteger.valueOf(Integer.MAX_VALUE));
-    bean.setTestUuid(UUID.fromString("FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF"));
+    bean.setTestUuid(UUID.fromString("ffffffff-ffff-ffff-ffff-ffffffffffff"));
     return bean;
   }
 

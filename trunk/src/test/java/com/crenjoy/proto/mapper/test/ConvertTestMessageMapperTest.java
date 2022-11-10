@@ -15,14 +15,14 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ConvertTestMessageMapperTest {
   
-//  // Null
-//  @Test
-//  @Order(0)
-//  public void testNull() {
-//    ConvertTestBean actual = ConvertTestBeanBuilder.getNull();
-//    ConvertTestMessage expected = ConvertTestMessageMapper.INSTANCE.toMessage(actual);
-//    Assertions.assertEquals(expected, ConvertTestMessageBuilder.getEmpty());
-//  }
+  // Null
+  @Test
+  @Order(0)
+  public void testNull() {
+    ConvertTestBean actual = ConvertTestBeanBuilder.getNull();
+    ConvertTestMessage expected = ConvertTestMessageMapper.INSTANCE.toMessage(actual);
+    Assertions.assertEquals(expected, ConvertTestMessageBuilder.getEmpty());
+  }
   
   // Empty
   @Test
@@ -49,6 +49,36 @@ public class ConvertTestMessageMapperTest {
   public void testMax() {
     ConvertTestBean actual = ConvertTestBeanBuilder.getMax();
     ConvertTestMessage expected = ConvertTestMessageMapper.INSTANCE.toMessage(actual);
+    Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMax());
+  }
+  
+  // Empty
+  @Test
+  @Order(4)
+  public void testUpdateEmpty() {
+    ConvertTestBean  actual= ConvertTestBeanBuilder.getEmpty();
+    ConvertTestMessage  expected= ConvertTestMessageBuilder.getMax();
+    expected=ConvertTestMessageMapper.INSTANCE.updateMessage(expected, actual);
+    Assertions.assertEquals(expected, ConvertTestMessageBuilder.getEmpty());
+  }
+  
+  // Min
+  @Test
+  @Order(4)
+  public void testUpdateMin() {
+    ConvertTestBean  actual= ConvertTestBeanBuilder.getMin();
+    ConvertTestMessage  expected= ConvertTestMessageBuilder.getMax();
+    expected=ConvertTestMessageMapper.INSTANCE.updateMessage(expected, actual);
+    Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMin());
+  }
+  
+  // Max
+  @Test
+  @Order(4)
+  public void testUpdateMax() {
+    ConvertTestBean  actual= ConvertTestBeanBuilder.getMax();
+    ConvertTestMessage  expected= ConvertTestMessageBuilder.getMin();
+    expected=ConvertTestMessageMapper.INSTANCE.updateMessage(expected, actual);
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMax());
   }
   
