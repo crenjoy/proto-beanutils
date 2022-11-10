@@ -12,7 +12,7 @@ import java.time.Instant;
 public class InstantConverter extends DateTimeConverter<Instant> {
 
   public InstantConverter() {
-    this(Instant.EPOCH);
+    this(null);
   }
 
   public InstantConverter(final Instant defaultValue) {

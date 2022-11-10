@@ -1,6 +1,7 @@
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
+
 import java.time.LocalTime;
 
 /**
@@ -12,7 +13,7 @@ import java.time.LocalTime;
 public class LocalTimeConverter extends DateTimeConverter<LocalTime> {
 
   public LocalTimeConverter() {
-    this(LocalTime.MIN);
+    this(null);
   }
 
   public LocalTimeConverter(final LocalTime defaultValue) {

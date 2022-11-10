@@ -4,6 +4,7 @@ package com.crenjoy.proto.mapper.message.test;
 import crenjoy.protobuf.ConvertTestMessage;
 import crenjoy.protobuf.TestEnum;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -33,7 +34,7 @@ public class ConvertTestMessageBuilder {
     builder.setTestStrEnum(TestEnum.male.name());
     builder.setTestIntEnum(0);
     builder.setTestEnum(TestEnum.male);
-    builder.setTestBigDecimal(String.valueOf(Double.MIN_VALUE));
+    builder.setTestBigDecimal(BigDecimal.valueOf(Double.MIN_VALUE).toString());
     builder.setTestDoubleBigDecimal(Double.MIN_VALUE);
     builder.setTestBigInteger(String.valueOf(Integer.MIN_VALUE));
     builder.setTestUuid("00000000-0000-0000-0000-000000000000");
@@ -53,10 +54,10 @@ public class ConvertTestMessageBuilder {
     builder.setTestStrEnum(TestEnum.female.name());
     builder.setTestIntEnum(1);
     builder.setTestEnum(TestEnum.female);
-    builder.setTestBigDecimal(String.valueOf(Double.MAX_VALUE));
+    builder.setTestBigDecimal(BigDecimal.valueOf(Double.MAX_VALUE).toString());
     builder.setTestDoubleBigDecimal(Double.MAX_VALUE);
     builder.setTestBigInteger(String.valueOf(Integer.MAX_VALUE));
-    builder.setTestUuid("FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF");
+    builder.setTestUuid("ffffffff-ffff-ffff-ffff-ffffffffffff");
     return builder.build();
   }
 }

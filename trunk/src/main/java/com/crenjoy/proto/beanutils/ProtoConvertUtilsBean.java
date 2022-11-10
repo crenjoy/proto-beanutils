@@ -1,5 +1,7 @@
+
 package com.crenjoy.proto.beanutils;
 
+import com.crenjoy.proto.beanutils.converters.BigDecimalConverter;
 import com.crenjoy.proto.beanutils.converters.ByteArrayConverter;
 import com.crenjoy.proto.beanutils.converters.ByteStringConverter;
 import com.crenjoy.proto.beanutils.converters.CalendarConverter;
@@ -22,7 +24,6 @@ import com.crenjoy.proto.beanutils.converters.UUIDConverter;
 import com.crenjoy.proto.beanutils.converters.ZonedDateTimeConverter;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Timestamp;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -35,10 +36,8 @@ import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
-
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
-import org.apache.commons.beanutils.converters.BigDecimalConverter;
 
 /**
  * Proto ConvertUtilsBean.
@@ -82,7 +81,7 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
     register(new DurationConverter(), java.time.Duration.class);
     register(new DurationProtoConverter(), com.google.protobuf.Duration.class);
   }
-  
+
   /**
    * Register Date.
    */
@@ -98,8 +97,7 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
    * Register Other.
    */
   protected void registerOther() {
-    BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
-    register(db, BigDecimal.class);
+    register(new BigDecimalConverter(null), BigDecimal.class);
     // UUID <-> String
     register(new UUIDConverter(), UUID.class);
     // Enum <-> String/Integer

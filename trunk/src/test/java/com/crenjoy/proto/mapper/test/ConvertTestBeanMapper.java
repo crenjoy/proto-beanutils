@@ -22,8 +22,7 @@ public interface ConvertTestBeanMapper extends BeanMapper {
   void updateBean(@MappingTarget ConvertTestBean bean, ConvertTestMessage msg);
 
   default TestEnum toEnum(Object value) {
-    TestEnum testEnum = ProtoConvertUtils.convert(value, TestEnum.class);
-    return (testEnum == null) ? TestEnum.male : testEnum;
+    return ProtoConvertUtils.convert(value, TestEnum.class);
   }
 
 }

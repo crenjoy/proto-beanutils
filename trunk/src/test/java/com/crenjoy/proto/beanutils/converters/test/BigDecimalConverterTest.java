@@ -26,7 +26,7 @@ public class BigDecimalConverterTest {
   @Test
   public void testToBigDecimal() {
     BigDecimal db = (BigDecimal) ProtoConvertUtils.convert("", BigDecimal.class);
-    Assertions.assertEquals(db, BigDecimal.ZERO);
+    Assertions.assertEquals(db, null);
   }
 
 }

@@ -57,6 +57,11 @@ public interface ProtoMapper {
     return (null == value) ? "" : value;
   }
 
+  default String toProtoString(Object value) {
+    String str = ProtoConvertUtils.convert(value);
+    return (null == str) ? "" : str;
+  }
+
   /**
    * Proto Float Not Null,Default 0.0.
    */
@@ -77,9 +82,5 @@ public interface ProtoMapper {
   default Boolean nullToProto(Boolean value) {
     return (null == value) ? Boolean.FALSE : value;
   }
-  
-  default String toProtoString(Object value) {
-    return ProtoConvertUtils.convert(value);
-  }
-  
+
 }

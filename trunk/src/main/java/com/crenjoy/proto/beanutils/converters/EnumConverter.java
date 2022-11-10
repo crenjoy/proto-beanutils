@@ -40,6 +40,7 @@ public final class EnumConverter<E extends Enum<E>> extends AbstractConverter {
    * {@code ConversionException} if an error occurs.
    */
   public EnumConverter() {
+    super(null);
   }
 
   /**

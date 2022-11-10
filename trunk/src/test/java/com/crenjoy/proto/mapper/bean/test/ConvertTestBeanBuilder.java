@@ -12,34 +12,15 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
-import java.time.ZoneOffset;
 import java.util.UUID;
 
 public class ConvertTestBeanBuilder {
 
-  public ConvertTestBean getNull() {
-    return new ConvertTestBean();
-  }
-
   public static ConvertTestBean getEmpty() {
     ConvertTestBean bean = new ConvertTestBean();
-    bean.setTestLocalDateTime(LocalDateTime.of(LocalDate.EPOCH, LocalTime.MIN));
-    bean.setTestLocalDate(LocalDate.EPOCH);
-    bean.setTestLocalTime(LocalTime.MIN);
-    bean.setTestInstant(Instant.EPOCH);
-    bean.setTestDuration(Duration.ZERO);
-
-    bean.setTestOffsetDateTime(Instant.EPOCH.atOffset(ZoneOffset.UTC));
-    bean.setTestOffsetTime(OffsetTime.of(LocalTime.MIN, ZoneOffset.UTC));
-    
-    bean.setTestZonedDateTime(Instant.EPOCH.atOffset(ZoneOffset.UTC).toZonedDateTime());
-    bean.setTestStrEnum(TestEnum.male);
-    bean.setTestIntEnum(TestEnum.male);
     bean.setTestEnum(TestEnum.male);
-    bean.setTestBigDecimal(BigDecimal.ZERO);
+    bean.setTestIntEnum(TestEnum.male);
     bean.setTestDoubleBigDecimal(BigDecimal.valueOf(0d));
-    bean.setTestBigInteger(BigInteger.ZERO);
-    bean.setTestUuid(UUID.fromString("00000000-0000-0000-0000-000000000000"));
     return bean;
   }
 

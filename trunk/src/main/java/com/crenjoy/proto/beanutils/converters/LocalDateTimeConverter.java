@@ -1,9 +1,8 @@
+
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  * 类型转换.
@@ -14,7 +13,7 @@ import java.time.LocalTime;
 public class LocalDateTimeConverter extends DateTimeConverter<LocalDateTime> {
 
   public LocalDateTimeConverter() {
-    this(LocalDateTime.of(LocalDate.EPOCH, LocalTime.MIN));
+    this(null);
   }
 
   public LocalDateTimeConverter(final LocalDateTime defaultValue) {

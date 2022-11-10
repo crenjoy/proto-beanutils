@@ -39,7 +39,7 @@ public final class DurationConverter extends AbstractConverter {
    * {@code ConversionException} if an error occurs.
    */
   public DurationConverter() {
-    this(Duration.ZERO);
+    this(null);
   }
 
   /**

@@ -42,21 +42,21 @@ public interface BeanMapper {
   
   default BigDecimal stringToBigDecimal(String value) {
     if (StringUtils.isBlank(value)) {
-      return BigDecimal.ZERO;
+      return null;
     }
     return ProtoConvertUtils.convert(value, BigDecimal.class);
   }
   
   default BigInteger stringToBigInteger(String value) {
     if (StringUtils.isBlank(value)) {
-      return BigInteger.ZERO;
+      return null;
     }
     return ProtoConvertUtils.convert(value, BigInteger.class);
   }
   
   default UUID stringToUUID(String value) {
     if (StringUtils.isBlank(value)) {
-      return UUID.fromString("00000000-0000-0000-0000-000000000000");
+      return null;
     }
     return ProtoConvertUtils.convert(value, UUID.class);
   }
