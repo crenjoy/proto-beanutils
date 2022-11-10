@@ -3,6 +3,7 @@ package com.crenjoy.proto.mapper.bean.test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 嵌套.
@@ -101,6 +102,41 @@ public class NestedTestBean {
 
   public void setTestMessageMap(TestBeanMap testMessageMap) {
     this.testMessageMap = testMessageMap;
+  }
+
+  @Override
+  public String toString() {
+    return "NestedTestBean [testString=" + testString + ", testDouble=" + testDouble + ", testBool="
+        + testBool + ", testBasicBean=" + testBasicBean + ", testStrMap=" + testStrMap
+        + ", testBasicMap=" + testBasicMap + ", testStrList=" + testStrList + ", testBasicList="
+        + testBasicList + ", testMessageList=" + testMessageList + ", testMessageMap="
+        + testMessageMap + "]";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(testBasicBean, testBasicList, testBasicMap, testBool, testDouble,
+        testMessageList, testMessageMap, testStrList, testStrMap, testString);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    NestedTestBean other = (NestedTestBean) obj;
+    return Objects.equals(testBasicBean, other.testBasicBean)
+        && Objects.equals(testBasicList, other.testBasicList)
+        && Objects.equals(testBasicMap, other.testBasicMap) && testBool == other.testBool
+        && Double.doubleToLongBits(testDouble) == Double.doubleToLongBits(other.testDouble)
+        && Objects.equals(testMessageList, other.testMessageList)
+        && Objects.equals(testMessageMap, other.testMessageMap)
+        && Objects.equals(testStrList, other.testStrList)
+        && Objects.equals(testStrMap, other.testStrMap)
+        && Objects.equals(testString, other.testString);
   }
 
 }
