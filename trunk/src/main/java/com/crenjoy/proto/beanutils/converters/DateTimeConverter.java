@@ -1,3 +1,4 @@
+
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
@@ -93,13 +94,15 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
     // Handle ZonedDateTime
     if (value instanceof ZonedDateTime) {
       final Instant temp = ((ZonedDateTime) value).toInstant();
-      return toDate(targetType, temp.getEpochSecond(), temp.getNano());
+      return toDate(targetType, temp.getEpochSecond(), temp.getNano(),
+          ((ZonedDateTime) value).getZone());
     }
 
     // Handle OffsetDateTime
     if (value instanceof OffsetDateTime) {
       final Instant temp = ((OffsetDateTime) value).toInstant();
-      return toDate(targetType, temp.getEpochSecond(), temp.getNano());
+      return toDate(targetType, temp.getEpochSecond(), temp.getNano(),
+          ((OffsetDateTime) value).getOffset());
     }
 
     // Handle LocalDate
@@ -118,7 +121,8 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
     // Handle LocalTime
     if (value instanceof OffsetTime) {
       final Instant temp = ((OffsetTime) value).atDate(LocalDate.of(1970, 1, 1)).toInstant();
-      return toDate(targetType, temp.getEpochSecond(), temp.getNano());
+      return toDate(targetType, temp.getEpochSecond(), temp.getNano(),
+          ((OffsetTime) value).getOffset());
     }
 
     // Handle Long
@@ -236,6 +240,10 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
         Long.valueOf(milliSeconds % 1000).intValue() * 1000000);
   }
 
+  private <T> T toDate(final Class<T> type, final long seconds, final int nanos) {
+    return toDate(type, seconds, nanos, getZoneId());
+  }
+
   /**
    * Convert value By Seconds and Nanos.
    *
@@ -245,7 +253,8 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
    * @param nanos   纳秒
    * @return target value
    */
-  private <T> T toDate(final Class<T> type, final long seconds, final int nanos) {
+  private <T> T toDate(final Class<T> type, final long seconds, final int nanos,
+      final ZoneId zoneId) {
     // com.google.protobuf.Timestamp
     if (type.equals(Timestamp.class)) {
       final Timestamp timestamp = Timestamp.newBuilder().setSeconds(seconds).setNanos(nanos)
@@ -261,37 +270,37 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
 
     // java.time.LocalDateTime
     if (type.equals(LocalDateTime.class)) {
-      final LocalDateTime localDateTime = instant.atZone(getZoneId()).toLocalDateTime();
+      final LocalDateTime localDateTime = instant.atZone(zoneId).toLocalDateTime();
       return type.cast(localDateTime);
     }
 
     // java.time.ZonedDateTime
     if (type.equals(ZonedDateTime.class)) {
-      final ZonedDateTime zonedDateTime = instant.atZone(getZoneId());
+      final ZonedDateTime zonedDateTime = instant.atZone(zoneId);
       return type.cast(zonedDateTime);
     }
 
     // java.time.OffsetDateTime
     if (type.equals(OffsetDateTime.class)) {
-      final OffsetDateTime offsetDateTime = instant.atZone(getZoneId()).toOffsetDateTime();
+      final OffsetDateTime offsetDateTime = instant.atZone(zoneId).toOffsetDateTime();
       return type.cast(offsetDateTime);
     }
 
     // java.time.LocalDate
     if (type.equals(LocalDate.class)) {
-      final LocalDate localDate = instant.atZone(getZoneId()).toLocalDate();
+      final LocalDate localDate = instant.atZone(zoneId).toLocalDate();
       return type.cast(localDate);
     }
 
     // java.time.LocalTime
     if (type.equals(LocalTime.class)) {
-      final LocalTime localTime = instant.atZone(getZoneId()).toLocalTime();
+      final LocalTime localTime = instant.atZone(zoneId).toLocalTime();
       return type.cast(localTime);
     }
 
     // java.time.OffsetTime
     if (type.equals(OffsetTime.class)) {
-      final OffsetTime offsetTime = instant.atZone(getZoneId()).toOffsetDateTime().toOffsetTime();
+      final OffsetTime offsetTime = instant.atZone(zoneId).toOffsetDateTime().toOffsetTime();
       return type.cast(offsetTime);
     }
 

@@ -8,80 +8,87 @@ option java_multiple_files = true;
 
 // Basic Test Message .
 message Basic1TestMessage {
-    double    test_double = 1;
-    float     test_float = 2;
-    int32     test_int32 = 3;
-    int64     test_int64 = 4;
-    uint32    test_uint32 = 5;
-    uint64    test_uint64 = 6;
-    sint32    test_sint32 = 7;
-    sint64    test_sint64 = 8;
-    fixed32   test_fixed32 = 9;
-    fixed64   test_fixed64 = 10;
-    sfixed32  test_sfixed32 = 11;
-    sfixed64  test_sfixed64 = 12;
-    bool      test_bool = 13;
-    string    test_string = 14;
-    bytes     test_bytes = 15;
+    double test_double = 1;
+    float test_float = 2;
+    int32 test_int32 = 3;
+    int64 test_int64 = 4;
+    uint32 test_uint32 = 5;
+    uint64 test_uint64 = 6;
+    sint32 test_sint32 = 7;
+    sint64 test_sint64 = 8;
+    fixed32 test_fixed32 = 9;
+    fixed64 test_fixed64 = 10;
+    sfixed32 test_sfixed32 = 11;
+    sfixed64 test_sfixed64 = 12;
+    bool test_bool = 13;
+    string test_string = 14;
+    bytes test_bytes = 15;
 }
 
 // Basic Message Test Bean.
-message Basic2TestMessage{
-   string    test_string = 1;
-   int32     test_int32  = 2;
-   bool      test_bool   = 3;
-   float     test_float   = 4;
+message Basic2TestMessage {
+    string test_string = 1;
+    int32 test_int32 = 2;
+    bool test_bool = 3;
+    float test_float = 4;
 }
 
-message BasicTestMessageMap{
-    map<string, string> test_str_map = 1;
+message BasicTestMessageMap {
+    map < string, string > test_str_map = 1;
 }
 
 message BasicTestMessageList {
-    repeated  string test_str_list = 1;
+    repeated string test_str_list = 1;
 }
 
 message BasicTestIntMessageList {
     repeated int32 test_int_list = 1;
 }
 
-message TestMessageMap{
-    map<string, Basic2TestMessage> test_basic_map = 1;
+message TestMessageMap {
+    map < string, Basic2TestMessage > test_basic_map = 1;
 }
 
 message TestMessageList {
-    repeated  Basic2TestMessage test_basic_list = 1;
-}
-
-//Nested Test Message.
-message NestedTestMessage {
-   string    test_string = 1;
-   double    test_double = 2;
-   bool      test_bool  = 3;
-   Basic2TestMessage test_basic_bean = 4;
-   map<string, string> test_str_map = 5;
-   repeated  string test_str_list = 6;
-   map<string, Basic2TestMessage> test_basic_map = 7;
-   repeated  Basic2TestMessage test_basic_list = 8;
-   TestMessageList test_message_list = 9;
-   TestMessageMap  test_message_map = 10;
+    repeated Basic2TestMessage test_basic_list = 1;
 }
 
 //Proto Message Convert POJO Bean.
 message ConvertTestMessage {
-    string   test_local_date_time = 1;
-    string   test_local_date = 2;
-    string   test_local_time = 3;
-    string   test_instant = 4;
-    string   test_duration =5;
-    string   test_offset_date_time = 6;
-    string   test_offset_time = 7;
-    string   test_zoned_date_time = 8;
-    string   test_str_enum = 9;
-    int32    test_int_enum = 10;
-    string   test_big_decimal = 11;
-    string   test_big_integer = 12;
-    string   test_uuid = 13;
+    string test_local_date_time = 1;
+    string test_local_date = 2;
+    string test_local_time = 3;
+    string test_instant = 4;
+    string test_duration = 5;
+    string test_offset_date_time = 6;
+    string test_offset_time = 7;
+    string test_zoned_date_time = 8;
+    string test_str_enum = 9;
+    int32 test_int_enum = 10;
+    TestEnum test_enum = 11;
+    string test_big_decimal = 12;
+    double test_double_big_decimal = 13;
+    string test_big_integer = 14;
+    string test_uuid = 15;
+}
+
+enum TestEnum {
+    male = 0;
+    female = 1;
+}
+
+//Nested Test Message.
+message NestedTestMessage {
+    string test_string = 1;
+    double test_double = 2;
+    bool test_bool = 3;
+    Basic2TestMessage test_basic_bean = 4;
+    map < string, string > test_str_map = 5;
+    map < string, Basic2TestMessage > test_basic_map = 6;
+    repeated string test_str_list = 7;
+    repeated Basic2TestMessage test_basic_list = 8;
+    TestMessageList test_message_list = 9;
+    TestMessageMap test_message_map = 10;
 }
 
 

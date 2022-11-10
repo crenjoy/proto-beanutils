@@ -37,6 +37,9 @@ public class EnumConverterTest {
 
     ps = (PizzaStatus) ProtoConvertUtils.convert("ORDERED", PizzaStatus.class);
     assertEquals(ps, PizzaStatus.ORDERED);
+    
+    ps = (PizzaStatus) ProtoConvertUtils.convert("", PizzaStatus.class);
+    assertEquals(ps, null);
   }
 
   @Test

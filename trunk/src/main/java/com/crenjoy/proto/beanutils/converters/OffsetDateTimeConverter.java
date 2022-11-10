@@ -1,7 +1,10 @@
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
+
+import java.time.Instant;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 /**
  * 类型转换.
@@ -12,7 +15,7 @@ import java.time.OffsetDateTime;
 public class OffsetDateTimeConverter extends DateTimeConverter<OffsetDateTime> {
 
   public OffsetDateTimeConverter() {
-    this(null);
+    this(Instant.EPOCH.atOffset(ZoneOffset.UTC));
   }
 
   public OffsetDateTimeConverter(final OffsetDateTime defaultValue) {

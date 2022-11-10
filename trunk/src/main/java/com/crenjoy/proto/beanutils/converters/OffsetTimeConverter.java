@@ -1,7 +1,10 @@
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
+
+import java.time.LocalTime;
 import java.time.OffsetTime;
+import java.time.ZoneOffset;
 
 /**
  * 类型转换.
@@ -12,7 +15,7 @@ import java.time.OffsetTime;
 public class OffsetTimeConverter extends DateTimeConverter<OffsetTime> {
 
   public OffsetTimeConverter() {
-    this(null);
+    this(OffsetTime.of(LocalTime.MIN, ZoneOffset.UTC));
   }
 
   public OffsetTimeConverter(final OffsetTime defaultValue) {

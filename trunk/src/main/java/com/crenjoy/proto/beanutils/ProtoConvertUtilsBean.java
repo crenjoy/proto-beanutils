@@ -18,9 +18,11 @@ import com.crenjoy.proto.beanutils.converters.SqlDateConverter;
 import com.crenjoy.proto.beanutils.converters.SqlTimeConverter;
 import com.crenjoy.proto.beanutils.converters.SqlTimestampConverter;
 import com.crenjoy.proto.beanutils.converters.TimestampConverter;
+import com.crenjoy.proto.beanutils.converters.UUIDConverter;
 import com.crenjoy.proto.beanutils.converters.ZonedDateTimeConverter;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Timestamp;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -32,6 +34,8 @@ import java.time.Period;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
+
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.beanutils.converters.BigDecimalConverter;
@@ -74,6 +78,9 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
     register(new TimestampConverter(), Timestamp.class);
     register(new ZonedDateTimeConverter(), ZonedDateTime.class);
     register(new PeriodConverter(), Period.class);
+    // Time Duration <-> Proto Duration
+    register(new DurationConverter(), java.time.Duration.class);
+    register(new DurationProtoConverter(), com.google.protobuf.Duration.class);
   }
   
   /**
@@ -93,14 +100,14 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
   protected void registerOther() {
     BigDecimalConverter db = new BigDecimalConverter(BigDecimal.ZERO);
     register(db, BigDecimal.class);
+    // UUID <-> String
+    register(new UUIDConverter(), UUID.class);
     // Enum <-> String/Integer
     register(new EnumConverter<>(), Enum.class);
     // ByteString <-> byte[]
     register(new ByteStringConverter(), ByteString.class);
     register(new ByteArrayConverter(), byte[].class);
-    // Time Duration <-> Proto Duration
-    register(new DurationConverter(), java.time.Duration.class);
-    register(new DurationProtoConverter(), com.google.protobuf.Duration.class);
+
   }
 
   @Override

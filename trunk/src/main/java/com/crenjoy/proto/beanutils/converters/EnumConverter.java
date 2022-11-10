@@ -78,11 +78,14 @@ public final class EnumConverter<E extends Enum<E>> extends AbstractConverter {
    * @throws Throwable if an error occurs converting to the specified type
    * @since 2.0
    */
-  @SuppressWarnings({ "rawtypes" })
+  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   protected <R> R convertToType(final Class<R> type, final Object value) throws Throwable {
     if (Enum.class.isAssignableFrom(type)) {
       final String enumValue = String.valueOf(value);
+      if("".equals(value)) {
+        return (R)getDefault(type);
+      }
       final R[] constants = type.getEnumConstants();
       if (constants == null) {
         throw conversionException(type, value);

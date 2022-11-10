@@ -1,6 +1,9 @@
 package com.crenjoy.proto.beanutils.converters;
 
 import com.crenjoy.proto.beanutils.DateTimeParse;
+
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 /**
@@ -12,7 +15,7 @@ import java.time.ZonedDateTime;
 public class ZonedDateTimeConverter extends DateTimeConverter<ZonedDateTime> {
 
   public ZonedDateTimeConverter() {
-    this(null);
+    this(Instant.EPOCH.atOffset(ZoneOffset.UTC).toZonedDateTime());
   }
 
   public ZonedDateTimeConverter(final ZonedDateTime defaultValue) {

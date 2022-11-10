@@ -77,5 +77,9 @@ public interface ProtoMapper {
   default Boolean nullToProto(Boolean value) {
     return (null == value) ? Boolean.FALSE : value;
   }
-
+  
+  default String toProtoString(Object value) {
+    return ProtoConvertUtils.convert(value);
+  }
+  
 }

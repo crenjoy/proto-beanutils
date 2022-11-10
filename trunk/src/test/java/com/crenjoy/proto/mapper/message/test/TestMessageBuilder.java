@@ -19,6 +19,7 @@ public class TestMessageBuilder {
     TestMessageList.Builder bean = TestMessageList.newBuilder();
     bean.addTestBasicList(Basic2TestMessage.newBuilder());
     
+    
     Basic2TestMessage.Builder bt=Basic2TestMessage.newBuilder();
     bt.setTestBool(true);
     bt.setTestFloat(Float.MAX_VALUE);
