@@ -22,23 +22,23 @@ import java.util.List;
  */
 public interface ProtoMapper {
 
-  default Timestamp toTimestamp(Object value) {
+  default Timestamp toProtoTimestamp(Object value) {
     return ProtoConvertUtils.convert(value, Timestamp.class);
   }
   
-  default Duration toDuration(Object value) {
+  default Duration toProtoDuration(Object value) {
     return ProtoConvertUtils.convert(value, Duration.class);
   }
 
   /**
    * byte[] to ByteString.
    */
-  default ByteString fromByteArray(byte[] value) {
+  default ByteString toProtoByteArray(byte[] value) {
     return ProtoConvertUtils.convert(value, ByteString.class);
   }
 
   /** List String To ProtocolStringList. */
-  default ProtocolStringList toListString(List<String> value) {
+  default ProtocolStringList toProtoListString(List<String> value) {
     if (value == null || value.isEmpty()) {
       return new LazyStringArrayList();
     }
