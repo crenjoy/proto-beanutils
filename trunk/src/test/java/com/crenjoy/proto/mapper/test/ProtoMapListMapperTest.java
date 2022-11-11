@@ -5,7 +5,7 @@ import com.crenjoy.proto.mapper.bean.test.BasicTestBeanList;
 import com.crenjoy.proto.mapper.bean.test.BasicTestBeanMap;
 import com.crenjoy.proto.mapper.bean.test.BasicTestIntBeanList;
 import com.crenjoy.proto.mapper.bean.test.BeanMapListBuilder;
-import com.crenjoy.proto.mapper.message.test.ProtoMapListBuilder;
+import com.crenjoy.proto.mapper.message.test.BeanMapListMsgBuilder;
 
 import crenjoy.protobuf.BasicTestIntMessageList;
 import crenjoy.protobuf.BasicTestMessageList;
@@ -33,7 +33,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapNull();
     BasicTestMessageMap expected = ProtoMapListMapper.INSTANCE.toMap(actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
   }
 
   // Empty Msg Map --> Empty Bean Map
@@ -43,7 +43,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapEmpty();
     BasicTestMessageMap expected = ProtoMapListMapper.INSTANCE.toMap(actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
   }
 
   // Full Msg Map --> Full Bean Map
@@ -53,7 +53,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapFull();
     BasicTestMessageMap expected = ProtoMapListMapper.INSTANCE.toMap(actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapFull().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapFull().getTestStrMapMap());
   }
 
   // Default Msg Map --> Default Bean Map
@@ -63,7 +63,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapDefault();
     BasicTestMessageMap expected = ProtoMapListMapper.INSTANCE.toMap(actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapDefault().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapDefault().getTestStrMapMap());
   }
 
   // Null List --> Empty List.
@@ -73,7 +73,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanList actual = BeanMapListBuilder.getListNull();
     BasicTestMessageList expected = ProtoMapListMapper.INSTANCE.toList(actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListEmpty().getTestStrListList());
+        BeanMapListMsgBuilder.getListEmpty().getTestStrListList());
   }
 
   // Empty List --> Empty List.
@@ -83,7 +83,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanList actual = BeanMapListBuilder.getListEmpty();
     BasicTestMessageList expected = ProtoMapListMapper.INSTANCE.toList(actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListEmpty().getTestStrListList());
+        BeanMapListMsgBuilder.getListEmpty().getTestStrListList());
   }
 
   // Full List --> Full List.
@@ -93,7 +93,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanList actual = BeanMapListBuilder.getListFull();
     BasicTestMessageList expected = ProtoMapListMapper.INSTANCE.toList(actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListFull().getTestStrListList());
+        BeanMapListMsgBuilder.getListFull().getTestStrListList());
   }
 
   // Default List --> Default List.
@@ -103,7 +103,7 @@ public class ProtoMapListMapperTest {
     BasicTestBeanList actual = BeanMapListBuilder.getListDefault();
     BasicTestMessageList expected = ProtoMapListMapper.INSTANCE.toList(actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListDefault().getTestStrListList());
+        BeanMapListMsgBuilder.getListDefault().getTestStrListList());
   }
 
   // Null Bean Map Update
@@ -111,16 +111,16 @@ public class ProtoMapListMapperTest {
   @Order(9)
   public void testUpdateMapNull() {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapNull();
-    BasicTestMessageMap expected = ProtoMapListBuilder.getMapNull();
+    BasicTestMessageMap expected = BeanMapListMsgBuilder.getMapNull();
     expected = ProtoMapListMapper.INSTANCE.updateMap(expected, actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
 
     actual = BeanMapListBuilder.getMapFull();
-    expected = ProtoMapListBuilder.getMapNull();
+    expected = BeanMapListMsgBuilder.getMapNull();
     expected = ProtoMapListMapper.INSTANCE.updateMap(expected, actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapFull().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapFull().getTestStrMapMap());
 
   }
 
@@ -129,16 +129,16 @@ public class ProtoMapListMapperTest {
   @Order(10)
   public void testUpdateMapFull() {
     BasicTestBeanMap actual = BeanMapListBuilder.getMapNull();
-    BasicTestMessageMap expected = ProtoMapListBuilder.getMapFull();
+    BasicTestMessageMap expected = BeanMapListMsgBuilder.getMapFull();
     expected = ProtoMapListMapper.INSTANCE.updateMap(expected, actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
 
     actual = BeanMapListBuilder.getMapEmpty();
-    expected = ProtoMapListBuilder.getMapFull();
+    expected = BeanMapListMsgBuilder.getMapFull();
     expected = ProtoMapListMapper.INSTANCE.updateMap(expected, actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
   }
 
   // Empty Bean Map Update
@@ -147,16 +147,16 @@ public class ProtoMapListMapperTest {
   public void testUpdateMapEmpty() {
 
     BasicTestBeanMap actual2 = BeanMapListBuilder.getMapFull();
-    BasicTestMessageMap expected2 = ProtoMapListBuilder.getMapEmpty();
+    BasicTestMessageMap expected2 = BeanMapListMsgBuilder.getMapEmpty();
     expected2 = ProtoMapListMapper.INSTANCE.updateMap(expected2, actual2);
     Assertions.assertEquals(expected2.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapFull().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapFull().getTestStrMapMap());
 
     BasicTestBeanMap actual = BeanMapListBuilder.getMapEmpty();
-    BasicTestMessageMap expected = ProtoMapListBuilder.getMapEmpty();
+    BasicTestMessageMap expected = BeanMapListMsgBuilder.getMapEmpty();
     expected = ProtoMapListMapper.INSTANCE.updateMap(expected, actual);
     Assertions.assertEquals(expected.getTestStrMapMap(),
-        ProtoMapListBuilder.getMapEmpty().getTestStrMapMap());
+        BeanMapListMsgBuilder.getMapEmpty().getTestStrMapMap());
   }
 
   // Null Bean List Update
@@ -164,16 +164,16 @@ public class ProtoMapListMapperTest {
   @Order(9)
   public void testUpdateListNull() {
     BasicTestBeanList actual = BeanMapListBuilder.getListNull();
-    BasicTestMessageList expected = ProtoMapListBuilder.getListNull();
+    BasicTestMessageList expected = BeanMapListMsgBuilder.getListNull();
     expected = ProtoMapListMapper.INSTANCE.updateList(expected, actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListEmpty().getTestStrListList());
+        BeanMapListMsgBuilder.getListEmpty().getTestStrListList());
 
     actual = BeanMapListBuilder.getListFull();
-    expected = ProtoMapListBuilder.getListNull();
+    expected = BeanMapListMsgBuilder.getListNull();
     expected = ProtoMapListMapper.INSTANCE.updateList(expected, actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListFull().getTestStrListList());
+        BeanMapListMsgBuilder.getListFull().getTestStrListList());
 
   }
 
@@ -182,10 +182,10 @@ public class ProtoMapListMapperTest {
   @Order(10)
   public void testUpdateListFull() {
     BasicTestBeanList actual = BeanMapListBuilder.getListNull();
-    BasicTestMessageList expected = ProtoMapListBuilder.getListFull();
+    BasicTestMessageList expected = BeanMapListMsgBuilder.getListFull();
     expected = ProtoMapListMapper.INSTANCE.updateList(expected, actual);
     Assertions.assertEquals(expected.getTestStrListList(),
-        ProtoMapListBuilder.getListEmpty().getTestStrListList());
+        BeanMapListMsgBuilder.getListEmpty().getTestStrListList());
 
   }
 
@@ -194,14 +194,14 @@ public class ProtoMapListMapperTest {
   @Order(10)
   public void testUpdateListEmpty() {
     BasicTestBeanList actual = BeanMapListBuilder.getListFull();
-    BasicTestMessageList expected = ProtoMapListBuilder.getListEmpty();
+    BasicTestMessageList expected = BeanMapListMsgBuilder.getListEmpty();
     expected = ProtoMapListMapper.INSTANCE.updateList(expected, actual);
 
     BasicTestBeanList actual1 = BeanMapListBuilder.getListEmpty();
-    BasicTestMessageList expected1 = ProtoMapListBuilder.getListEmpty();
+    BasicTestMessageList expected1 = BeanMapListMsgBuilder.getListEmpty();
     expected = ProtoMapListMapper.INSTANCE.updateList(expected1, actual1);
     Assertions.assertEquals(expected1.getTestStrListList(),
-        ProtoMapListBuilder.getListEmpty().getTestStrListList());
+        BeanMapListMsgBuilder.getListEmpty().getTestStrListList());
   }
   
   // IntList
@@ -211,7 +211,7 @@ public class ProtoMapListMapperTest {
     BasicTestIntBeanList actual = BeanMapListBuilder.getIntListFull();
     BasicTestIntMessageList expected = ProtoMapListMapper.INSTANCE.toIntList(actual);
     Assertions.assertEquals(expected.getTestIntListList(),
-        ProtoMapListBuilder.getIntListFull().getTestIntListList());
+        BeanMapListMsgBuilder.getIntListFull().getTestIntListList());
   }
   
   // Full Bean Int List Update
@@ -219,10 +219,10 @@ public class ProtoMapListMapperTest {
   @Order(12)
   public void testUpdateIntListFull() {
     BasicTestIntBeanList actual = BeanMapListBuilder.getIntListFull();
-    BasicTestIntMessageList expected = ProtoMapListBuilder.getIntListNull();
+    BasicTestIntMessageList expected = BeanMapListMsgBuilder.getIntListNull();
     expected = ProtoMapListMapper.INSTANCE.updateIntList(expected, actual);
     Assertions.assertEquals(expected.getTestIntListList(),
-        ProtoMapListBuilder.getIntListFull().getTestIntListList());
+        BeanMapListMsgBuilder.getIntListFull().getTestIntListList());
 
   }
 

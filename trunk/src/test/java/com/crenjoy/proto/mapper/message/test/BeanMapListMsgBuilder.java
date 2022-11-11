@@ -16,9 +16,9 @@ import java.util.Map;
  * @author CGD
  *
  */
-public class ProtoMapListBuilder {
+public class BeanMapListMsgBuilder {
 
-  protected ProtoMapListBuilder() {
+  protected BeanMapListMsgBuilder() {
 
   }
 

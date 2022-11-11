@@ -8,9 +8,9 @@ package com.crenjoy.proto.mapper.bean.test;
  *
  */
 public class Basic2TestBeanBuilder {
-  
+
   protected Basic2TestBeanBuilder() {
-    
+
   }
 
   /**
@@ -40,8 +40,8 @@ public class Basic2TestBeanBuilder {
 
     msg.setTestFloat(Float.MIN_VALUE);
     msg.setTestInt32(Integer.MIN_VALUE);
-    msg.setTestBool(true);
-    msg.setTestString("00000000");
+    msg.setTestBool(false);
+    msg.setTestString("000000000000");
     return msg;
   }
 
@@ -53,8 +53,8 @@ public class Basic2TestBeanBuilder {
 
     msg.setTestFloat(Float.MAX_VALUE);
     msg.setTestInt32(Integer.MAX_VALUE);
-    msg.setTestBool(false);
-    msg.setTestString("Hello World!");
+    msg.setTestBool(true);
+    msg.setTestString("1234567890ABCDEF");
     return msg;
   }
 

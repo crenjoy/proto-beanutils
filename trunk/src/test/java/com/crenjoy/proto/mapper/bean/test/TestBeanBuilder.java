@@ -20,24 +20,10 @@ public class TestBeanBuilder {
     TestBeanList bean = new TestBeanList();
     List<Basic2TestBean> list = new ArrayList<>();
     list.add(new Basic2TestBean());
-    Basic2TestBean bt = new Basic2TestBean();
-    bt.setTestBool(true);
-    bt.setTestFloat(Float.MAX_VALUE);
-    bt.setTestInt32(Integer.MAX_VALUE);
-    bt.setTestString("");
-    list.add(bt);
-    Basic2TestBean bt1 = new Basic2TestBean();
-    bt1.setTestBool(false);
-    bt1.setTestFloat(Float.MIN_VALUE);
-    bt1.setTestInt32(Integer.MIN_VALUE);
-    bt1.setTestString("");
-    list.add(bt1);
-    Basic2TestBean bt2 = new Basic2TestBean();
-    bt2.setTestBool(true);
-    bt2.setTestFloat(0f);
-    bt2.setTestInt32(0);
-    bt2.setTestString("123");
-    list.add(bt2);
+
+    list.add(Basic2TestBeanBuilder.getMax());
+    list.add(Basic2TestBeanBuilder.getMin());
+    list.add(Basic2TestBeanBuilder.getEmpty());
     bean.setTestBasicList(list);
     return bean;
   }
@@ -50,24 +36,9 @@ public class TestBeanBuilder {
     TestBeanMap bean = new TestBeanMap();
     Map<String, Basic2TestBean> map = new HashMap<>();
     map.put("Null", new Basic2TestBean());
-    Basic2TestBean bt = new Basic2TestBean();
-    bt.setTestBool(true);
-    bt.setTestFloat(Float.MAX_VALUE);
-    bt.setTestInt32(Integer.MAX_VALUE);
-    bt.setTestString("");
-    map.put("Max", bt);
-    Basic2TestBean bt1 = new Basic2TestBean();
-    bt1.setTestBool(false);
-    bt1.setTestFloat(Float.MIN_VALUE);
-    bt1.setTestInt32(Integer.MIN_VALUE);
-    bt1.setTestString("");
-    map.put("Min", bt1);
-    Basic2TestBean bt2 = new Basic2TestBean();
-    bt2.setTestBool(true);
-    bt2.setTestFloat(0f);
-    bt2.setTestInt32(0);
-    bt2.setTestString("123");
-    map.put("Zero", bt2);
+    map.put("Max", Basic2TestBeanBuilder.getMax());
+    map.put("Min", Basic2TestBeanBuilder.getMin());
+    map.put("Zero", Basic2TestBeanBuilder.getEmpty());
     bean.setTestBasicMap(map);
     return bean;
   }

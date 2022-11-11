@@ -23,18 +23,34 @@ public class NestedTestBeanBuilder {
     return bean;
   }
 
-////Nested Test Message.
-//message NestedTestMessage {
-//    string test_string = 1;
-//    double test_double = 2;
-//    bool test_bool = 3;
-//    Basic2TestMessage test_basic_bean = 4;
-//    map < string, string > test_str_map = 5;
-//    map < string, Basic2TestMessage > test_basic_map = 6;
-//    repeated string test_str_list = 7;
-//    repeated Basic2TestMessage test_basic_list = 8;
-//    TestMessageList test_message_list = 9;
-//    TestMessageMap test_message_map = 10;
-//}
+  public static NestedTestBean getMin() {
+    NestedTestBean bean = new NestedTestBean();
+    bean.setTestString("1234567890ABCDEF");
+    bean.setTestDouble(Double.MIN_VALUE);
+    bean.setTestBool(false);
+    bean.setTestBasicBean(Basic2TestBeanBuilder.getMin());
+    bean.setTestStrMap(BeanMapListBuilder.getMapDefault().getTestStrMap());
+    bean.setTestBasicMap(TestBeanBuilder.getMapNull().getTestBasicMap());
+    bean.setTestStrList(BeanMapListBuilder.getListDefault().getTestStrList());
+    bean.setTestBasicList(TestBeanBuilder.getListNull().getTestBasicList());
+    bean.setTestMessageList(TestBeanBuilder.getListNull());
+    bean.setTestMessageMap(TestBeanBuilder.getMapNull());
+    return bean;
+  }
+
+  public static NestedTestBean getMax() {
+    NestedTestBean bean = new NestedTestBean();
+    bean.setTestString("0000000000");
+    bean.setTestDouble(Double.MAX_VALUE);
+    bean.setTestBool(true);
+    bean.setTestBasicBean(Basic2TestBeanBuilder.getMax());
+    bean.setTestStrMap(BeanMapListBuilder.getMapFull().getTestStrMap());
+    bean.setTestBasicMap(TestBeanBuilder.getMapFull().getTestBasicMap());
+    bean.setTestStrList(BeanMapListBuilder.getListFull().getTestStrList());
+    bean.setTestBasicList(TestBeanBuilder.getListFull().getTestBasicList());
+    bean.setTestMessageList(TestBeanBuilder.getListFull());
+    bean.setTestMessageMap(TestBeanBuilder.getMapFull());
+    return bean;
+  }
 
 }

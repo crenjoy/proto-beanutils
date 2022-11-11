@@ -17,7 +17,8 @@ public class NestedTestMessageMapperTest {
   public void testNull() {
     NestedTestBean actual = NestedTestBeanBuilder.getNull();
     NestedTestMessage expected = NestedTestMessageMapper.INSTANCE.toMessage(actual);
-    //Assertions.assertEquals(expected, NestedTestMessageBuilder.getEmpty());
+    expected=expected.toBuilder().clearTestBasicBean().clearTestMessageList().clearTestMessageMap().build();
+    Assertions.assertEquals(expected, NestedTestMessageBuilder.getEmpty());
   }
 
   // Empty
@@ -26,21 +27,26 @@ public class NestedTestMessageMapperTest {
   public void testEmpty() {
     NestedTestBean actual = NestedTestBeanBuilder.getEmpty();
     NestedTestMessage expected = NestedTestMessageMapper.INSTANCE.toMessage(actual);
-    //Assertions.assertEquals(expected, NestedTestMessageBuilder.getEmpty());
+    expected=expected.toBuilder().clearTestBasicBean().clearTestMessageList().clearTestMessageMap().build();
+    Assertions.assertEquals(expected, NestedTestMessageBuilder.getEmpty());
+  }
+
+  // Min
+  @Test
+  @Order(1)
+  public void testMin() {
+    NestedTestBean actual = NestedTestBeanBuilder.getMin();
+    NestedTestMessage expected = NestedTestMessageMapper.INSTANCE.toMessage(actual);
+    Assertions.assertEquals(expected, NestedTestMessageBuilder.getMin());
   }
   
-////Nested Test Message.
-//message NestedTestMessage {
-//  string test_string = 1;
-//  double test_double = 2;
-//  bool test_bool = 3;
-//  Basic2TestMessage test_basic_bean = 4;
-//  map < string, string > test_str_map = 5;
-//  map < string, Basic2TestMessage > test_basic_map = 6;
-//  repeated string test_str_list = 7;
-//  repeated Basic2TestMessage test_basic_list = 8;
-//  TestMessageList test_message_list = 9;
-//  TestMessageMap test_message_map = 10;
-//}
+  // Max
+  @Test
+  @Order(1)
+  public void testMax() {
+    NestedTestBean actual = NestedTestBeanBuilder.getMax();
+    NestedTestMessage expected = NestedTestMessageMapper.INSTANCE.toMessage(actual);
+    Assertions.assertEquals(expected, NestedTestMessageBuilder.getMax());
+  }
 
 }

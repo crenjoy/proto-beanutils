@@ -49,6 +49,12 @@ public class Basic2TestBean {
   }
 
   @Override
+  public String toString() {
+    return "Basic2TestBean [testString=" + testString + ", testInt32=" + testInt32 + ", testBool="
+        + testBool + ", testFloat=" + testFloat + "]";
+  }
+
+  @Override
   public int hashCode() {
     return Objects.hash(testBool, testFloat, testInt32, testString);
   }

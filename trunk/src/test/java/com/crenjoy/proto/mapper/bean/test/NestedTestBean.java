@@ -115,8 +115,7 @@ public class NestedTestBean {
 
   @Override
   public int hashCode() {
-    return Objects.hash(testBasicBean, testBasicList, testBasicMap, testBool, testDouble,
-        testMessageList, testMessageMap, testStrList, testStrMap, testString);
+    return Objects.hash(testBasicBean, testBool, testDouble, testString);
   }
 
   @Override
@@ -128,14 +127,8 @@ public class NestedTestBean {
     if (getClass() != obj.getClass())
       return false;
     NestedTestBean other = (NestedTestBean) obj;
-    return Objects.equals(testBasicBean, other.testBasicBean)
-        && Objects.equals(testBasicList, other.testBasicList)
-        && Objects.equals(testBasicMap, other.testBasicMap) && testBool == other.testBool
+    return Objects.equals(testBasicBean, other.testBasicBean) && testBool == other.testBool
         && Double.doubleToLongBits(testDouble) == Double.doubleToLongBits(other.testDouble)
-        && Objects.equals(testMessageList, other.testMessageList)
-        && Objects.equals(testMessageMap, other.testMessageMap)
-        && Objects.equals(testStrList, other.testStrList)
-        && Objects.equals(testStrMap, other.testStrMap)
         && Objects.equals(testString, other.testString);
   }
 
