@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -87,7 +88,7 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
 
     // Handle LocalDateTime
     if (value instanceof LocalDateTime) {
-      final Instant temp = ((LocalDateTime) value).atZone(getZoneId()).toInstant();
+      final Instant temp = ((LocalDateTime) value).atZone(ZoneId.systemDefault()).toInstant();
       return toDate(targetType, temp.getEpochSecond(), temp.getNano());
     }
 
@@ -107,13 +108,13 @@ public abstract class DateTimeConverter<D> extends AbstractConverter {
 
     // Handle LocalDate
     if (value instanceof LocalDate) {
-      final Instant temp = ((LocalDate) value).atStartOfDay(getZoneId()).toInstant();
+      final Instant temp = ((LocalDate) value).atStartOfDay(ZoneOffset.UTC).toInstant();
       return toDate(targetType, temp.getEpochSecond(), temp.getNano());
     }
 
     // Handle LocalTime
     if (value instanceof LocalTime) {
-      final Instant temp = ((LocalTime) value).atDate(LocalDate.of(1970, 1, 1)).atZone(getZoneId())
+      final Instant temp = ((LocalTime) value).atDate(LocalDate.of(1970, 1, 1)).atZone(ZoneId.systemDefault())
           .toInstant();
       return toDate(targetType, temp.getEpochSecond(), temp.getNano());
     }

@@ -87,10 +87,10 @@ public class DateTimeConverterTest {
     assertEquals(LocalDateTime.of(2022, 10, 24, 16, 56), datetimeParsed);
 
     datetimeParsed = (LocalDateTime) ProtoConvertUtils.convert("2022-10-24", LocalDateTime.class);
-    assertEquals(LocalDateTime.of(2022, 10, 24, 0, 0), datetimeParsed);
+    assertEquals(LocalDate.of(2022, 10, 24), datetimeParsed.toLocalDate());
 
     datetimeParsed = (LocalDateTime) ProtoConvertUtils.convert("2022/10/24", LocalDateTime.class);
-    assertEquals(LocalDateTime.of(2022, 10, 24, 0, 0), datetimeParsed);
+    assertEquals(LocalDate.of(2022, 10, 24), datetimeParsed.toLocalDate());
   }
 
   @Test

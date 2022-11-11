@@ -15,7 +15,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ConvertTestMessageMapperTest {
   
-  // Null
+  // Null.
   @Test
   @Order(0)
   public void testNull() {
@@ -24,7 +24,7 @@ public class ConvertTestMessageMapperTest {
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getEmpty());
   }
   
-  // Empty
+  // Empty.
   @Test
   @Order(1)
   public void testEmpty() {
@@ -34,7 +34,7 @@ public class ConvertTestMessageMapperTest {
   }
   
   
-  // Min
+  // Min.
   @Test
   @Order(2)
   public void testMin() {
@@ -43,7 +43,7 @@ public class ConvertTestMessageMapperTest {
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMin());
   }
   
-  // Max
+  // Max.
   @Test
   @Order(3)
   public void testMax() {
@@ -52,7 +52,7 @@ public class ConvertTestMessageMapperTest {
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMax());
   }
   
-  // Empty
+  // Empty.
   @Test
   @Order(4)
   public void testUpdateEmpty() {
@@ -62,7 +62,7 @@ public class ConvertTestMessageMapperTest {
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getEmpty());
   }
   
-  // Min
+  // Min.
   @Test
   @Order(4)
   public void testUpdateMin() {
@@ -72,7 +72,7 @@ public class ConvertTestMessageMapperTest {
     Assertions.assertEquals(expected, ConvertTestMessageBuilder.getMin());
   }
   
-  // Max
+  // Max.
   @Test
   @Order(4)
   public void testUpdateMax() {

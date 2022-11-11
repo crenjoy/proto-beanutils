@@ -3,8 +3,11 @@ package com.crenjoy.proto.mapper;
 
 import com.crenjoy.proto.beanutils.ProtoConvertUtils;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.Duration;
 import com.google.protobuf.LazyStringArrayList;
 import com.google.protobuf.ProtocolStringList;
+import com.google.protobuf.Timestamp;
+
 import java.util.List;
 
 /**
@@ -18,6 +21,14 @@ import java.util.List;
  *
  */
 public interface ProtoMapper {
+
+  default Timestamp toTimestamp(Object value) {
+    return ProtoConvertUtils.convert(value, Timestamp.class);
+  }
+  
+  default Duration toDuration(Object value) {
+    return ProtoConvertUtils.convert(value, Duration.class);
+  }
 
   /**
    * byte[] to ByteString.
