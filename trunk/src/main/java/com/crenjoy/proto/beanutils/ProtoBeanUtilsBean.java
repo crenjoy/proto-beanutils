@@ -1,3 +1,4 @@
+
 package com.crenjoy.proto.beanutils;
 
 import org.apache.commons.beanutils.BeanUtils;

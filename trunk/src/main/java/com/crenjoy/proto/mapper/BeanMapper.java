@@ -40,21 +40,24 @@ public interface BeanMapper {
     return (List<String>) value;
   }
   
-  default BigDecimal stringToBigDecimal(String value) {
+  /** String to BigDecimal.  */
+  default BigDecimal toBigDecimal(String value) {
     if (StringUtils.isBlank(value)) {
       return null;
     }
     return ProtoConvertUtils.convert(value, BigDecimal.class);
   }
   
-  default BigInteger stringToBigInteger(String value) {
+  /** String to BigInteger.  */
+  default BigInteger toBigInteger(String value) {
     if (StringUtils.isBlank(value)) {
       return null;
     }
     return ProtoConvertUtils.convert(value, BigInteger.class);
   }
   
-  default UUID stringToUUID(String value) {
+  /** String to UUID .  */
+  default UUID toUUID(String value) {
     if (StringUtils.isBlank(value)) {
       return null;
     }
@@ -93,8 +96,5 @@ public interface BeanMapper {
   default ZonedDateTime toZonedDateTime(Object value) {
     return ProtoConvertUtils.convert(value, ZonedDateTime.class);
   }
-  
-
-  
-
+ 
 }

@@ -14,16 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.crenjoy.proto.beanutils.converters;
 
 import java.util.UUID;
-
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * {@link org.apache.commons.beanutils2.Converter} implementation that handles conversion
- * to and from <b>java.util.UUID</b> objects.
- * <p>
+ * {@link org.apache.commons.beanutils2.Converter} implementation that handles
+ * conversion to and from <b>java.util.UUID</b> objects.
+ * <br/>
  * Can be configured to either return a <i>default value</i> or throw a
  * {@code ConversionException} if a conversion error occurs.
  *
@@ -31,53 +31,55 @@ import org.apache.commons.beanutils.converters.AbstractConverter;
  */
 public final class UUIDConverter extends AbstractConverter {
 
-    /**
-     * Constructs a <b>java.util.UUID</b> <i>Converter</i> that throws
-     * a {@code ConversionException} if an error occurs.
-     */
-    public UUIDConverter() {
+  /**
+   * Constructs a <b>java.util.UUID</b> <i>Converter</i> that throws a
+   * {@code ConversionException} if an error occurs.
+   */
+  public UUIDConverter() {
+  }
+
+  /**
+   * Constructs a <b>java.util.UUID</b> <i>Converter</i> that returns a default
+   * value if an error occurs.
+   *
+   * @param defaultValue The default value to be returned if the value to be
+   *                     converted is missing or an error occurs converting the
+   *                     value.
+   */
+  public UUIDConverter(final UUID defaultValue) {
+    super(defaultValue);
+  }
+
+  /**
+   * Gets the default type this {@code Converter} handles.
+   *
+   * @return The default type this {@code Converter} handles.
+   * @since 2.0
+   */
+  @Override
+  protected Class<UUID> getDefaultType() {
+    return UUID.class;
+  }
+
+  /**
+   * <p>
+   * Converts a java.util.UUID or object into a String.
+   * </p>
+   *
+   * @param <T>   Target type of the conversion.
+   * @param type  Data type to which this value should be converted.
+   * @param value The input value to be converted.
+   * @return The converted value.
+   * @throws Throwable if an error occurs converting to the specified type
+   * @since 2.0
+   */
+  @Override
+  protected <T> T convertToType(final Class<T> type, final Object value) throws Throwable {
+    if (UUID.class.equals(type)) {
+      return type.cast(UUID.fromString(String.valueOf(value)));
     }
 
-    /**
-     * Constructs a <b>java.util.UUID</b> <i>Converter</i> that returns
-     * a default value if an error occurs.
-     *
-     * @param defaultValue The default value to be returned
-     * if the value to be converted is missing or an error
-     * occurs converting the value.
-     */
-    public UUIDConverter(final UUID defaultValue) {
-        super(defaultValue);
-    }
-
-    /**
-     * Gets the default type this {@code Converter} handles.
-     *
-     * @return The default type this {@code Converter} handles.
-     * @since 2.0
-     */
-    @Override
-    protected Class<UUID> getDefaultType() {
-        return UUID.class;
-    }
-
-    /**
-     * <p>Converts a java.util.UUID or object into a String.</p>
-     *
-     * @param <T> Target type of the conversion.
-     * @param type Data type to which this value should be converted.
-     * @param value The input value to be converted.
-     * @return The converted value.
-     * @throws Throwable if an error occurs converting to the specified type
-     * @since 2.0
-     */
-    @Override
-    protected <T> T convertToType(final Class<T> type, final Object value) throws Throwable {
-        if (UUID.class.equals(type)) {
-            return type.cast(UUID.fromString(String.valueOf(value)));
-        }
-
-        throw conversionException(type, value);
-    }
+    throw conversionException(type, value);
+  }
 
 }

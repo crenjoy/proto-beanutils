@@ -7,7 +7,6 @@ import com.google.protobuf.Duration;
 import com.google.protobuf.LazyStringArrayList;
 import com.google.protobuf.ProtocolStringList;
 import com.google.protobuf.Timestamp;
-
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public interface ProtoMapper {
   default Timestamp toProtoTimestamp(Object value) {
     return ProtoConvertUtils.convert(value, Timestamp.class);
   }
-  
+
   default Duration toProtoDuration(Object value) {
     return ProtoConvertUtils.convert(value, Duration.class);
   }
@@ -33,18 +32,23 @@ public interface ProtoMapper {
   /**
    * byte[] to ByteString.
    */
-  default ByteString toProtoByteArray(byte[] value) {
+  default ByteString toProtoByteString(byte[] value) {
     return ProtoConvertUtils.convert(value, ByteString.class);
   }
 
   /** List String To ProtocolStringList. */
-  default ProtocolStringList toProtoListString(List<String> value) {
+  default ProtocolStringList toProtoStringList(List<String> value) {
     if (value == null || value.isEmpty()) {
       return new LazyStringArrayList();
     }
     ProtocolStringList protoList = new LazyStringArrayList();
     protoList.addAll(value);
     return protoList;
+  }
+
+  default String toProtoString(Object value) {
+    String str = ProtoConvertUtils.convert(value);
+    return (null == str) ? "" : str;
   }
 
   /**
@@ -66,11 +70,6 @@ public interface ProtoMapper {
    */
   default String nullToProto(String value) {
     return (null == value) ? "" : value;
-  }
-
-  default String toProtoString(Object value) {
-    String str = ProtoConvertUtils.convert(value);
-    return (null == str) ? "" : str;
   }
 
   /**
