@@ -17,22 +17,43 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.crenjoy</groupId>
+    <groupId>com.gitee.jmash</groupId>
     <artifactId>proto-beanutils</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Proto BeanUtils</name>
+    <description>Proto Message Object Convert Bean Entity Object , dependency MapStruct、commons-beanutils.</description>
+    <url>https://github.com/crenjoy/proto-beanutils</url>
+    <inceptionYear>2022</inceptionYear>
     <properties>
-        <java.version>1.8</java.version>
-        <org.mapstruct.version>1.6.0-SNAPSHOT</org.mapstruct.version>
+        <java.version>17</java.version>
+        <org.mapstruct.version>1.6.0</org.mapstruct.version>
         <beanutils.version>1.9.4</beanutils.version>
         <!-- CURRENT_GRPC_VERSION -->
         <grpc.version>1.49.2</grpc.version>
         <protobuf.version>3.21.7</protobuf.version>
         <protoc.version>3.21.7</protoc.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>https://github.com/crenjoy/proto-beanutils.git</connection>
+        <url>https://github.com/crenjoy/proto-beanutils</url>
+    </scm>
+    <developers>
+        <developer>
+            <name>CGD</name>
+            <email>52398508@qq.com</email>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
-            <groupId>org.mapstruct</groupId>
+            <groupId>com.gitee.jmash</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
@@ -125,18 +146,18 @@
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
                     <fork>true</fork>
-                    <!-- 
                     <compilerArgs>
+                        <!--     
                         <compilerArg>-J-verbose</compilerArg>
                         <compilerArg>-J-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</compilerArg>
-                    </compilerArgs>-->
+                        -->
+                    </compilerArgs>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>org.mapstruct</groupId>
+                            <groupId>com.gitee.jmash</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>
-                            
-                        </path>                        
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -146,6 +167,85 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+				<dependencies>
+					<dependency>
+					  <groupId>com.thoughtworks.xstream</groupId>
+					  <artifactId>xstream</artifactId>
+					  <version>1.4.15</version> 
+					</dependency>
+				</dependencies>
+            </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- release 验证-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>artifactory</id>
+            <name>artifactory-snapshots</name>
+            <url>https://maven.crenjoy.com/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

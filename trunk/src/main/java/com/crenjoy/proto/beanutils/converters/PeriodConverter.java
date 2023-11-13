@@ -21,7 +21,7 @@ import java.time.Period;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * {@link org.apache.commons.beanutils2.Converter} implementation that handles
+ * {org.apache.commons.beanutils2.Converter} implementation that handles
  * conversion to and from <b>java.time.Period</b> objects.
  * <p>
  * Can be configured to either return a <i>default value</i> or throw a

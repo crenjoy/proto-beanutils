@@ -22,7 +22,7 @@ import java.time.Duration;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * {@link org.apache.commons.beanutils2.Converter} implementation that handles
+ * {org.apache.commons.beanutils2.Converter} implementation that handles
  * conversion to and from <b>java.time.Duration</b> objects.
  * <p>
  * Can be configured to either return a <i>default value</i> or throw a

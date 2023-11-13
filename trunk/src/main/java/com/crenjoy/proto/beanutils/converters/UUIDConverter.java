@@ -21,7 +21,7 @@ import java.util.UUID;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * {@link org.apache.commons.beanutils2.Converter} implementation that handles
+ * {org.apache.commons.beanutils2.Converter} implementation that handles
  * conversion to and from <b>java.util.UUID</b> objects.
  * <br/>
  * Can be configured to either return a <i>default value</i> or throw a
