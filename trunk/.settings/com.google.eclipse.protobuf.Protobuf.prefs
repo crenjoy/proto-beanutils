@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-paths.directoryPaths=D\:\\gcloud\\nginx\\protoc\\include
+paths.directoryPaths=/data/work/jmash/protoc/include,D\:\\gcloud\\nginx\\protoc\\include
 paths.filesInMultipleDirectories=true
 paths.filesInOneDirectoryOnly=false

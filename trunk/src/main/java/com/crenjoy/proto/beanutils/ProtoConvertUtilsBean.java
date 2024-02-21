@@ -24,6 +24,7 @@ import com.crenjoy.proto.beanutils.converters.UUIDConverter;
 import com.crenjoy.proto.beanutils.converters.ZonedDateTimeConverter;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Timestamp;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -127,6 +128,38 @@ public class ProtoConvertUtilsBean extends ConvertUtilsBean {
       return (Converter) lookup(Enum.class);
     }
     return super.lookup(sourceType, targetType);
+  }
+
+  /**
+   * Convert the specified value into a String. If the specified value is an array, the first
+   * element (converted to a String) will be returned. The registered {@link Converter} for the
+   * <code>java.lang.String</code> class will be used, which allows applications to customize
+   * Object->String conversions (the default implementation simply uses toString()).
+   *
+   * @param value Value to be converted (may be null)
+   * @return The converted String value or null if value is null
+   */
+  @Override
+  public String convert(Object value) {
+    if (value == null) {
+      return null;
+    } else if (value.getClass().isArray()) {
+      if (Array.getLength(value) < 1) {
+        return (null);
+      }
+      value = Array.get(value, 0);
+      if (value == null) {
+        return null;
+      } else {
+        //使用ValueType Converter , Not StringConverter
+        final Converter converter = lookup(value.getClass(), String.class);
+        return (converter.convert(String.class, value));
+      }
+    } else {
+      //使用ValueType Converter , Not StringConverter
+      final Converter converter = lookup(value.getClass(), String.class);
+      return (converter.convert(String.class, value));
+    }
   }
 
 }

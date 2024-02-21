@@ -1,9 +1,6 @@
 
 package com.crenjoy.proto.mapper.message.test;
 
-import crenjoy.protobuf.ConvertTestMessage;
-import crenjoy.protobuf.TestEnum;
-
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
@@ -12,6 +9,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
+import crenjoy.protobuf.ConvertTestMessage;
+import crenjoy.protobuf.TestEnum;
 
 public class ConvertTestMessageBuilder {
 
@@ -22,14 +22,16 @@ public class ConvertTestMessageBuilder {
 
   public static ConvertTestMessage getMin() {
     ConvertTestMessage.Builder builder = ConvertTestMessage.newBuilder();
-    builder.setTestLocalDateTime(LocalDateTime.MIN.toString());
+    builder.setTestLocalDateTime(LocalDateTime.MIN.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
     builder.setTestLocalDate(LocalDate.MIN.toString());
-    builder.setTestLocalTime(LocalTime.MIN.toString());
+    builder.setTestLocalTime(LocalTime.MIN.format(DateTimeFormatter.ISO_LOCAL_TIME));
     builder.setTestInstant(Instant.MIN.toString());
     builder.setTestDuration(Duration.between(Instant.MIN, Instant.MAX).toString());
-    builder.setTestOffsetDateTime(OffsetDateTime.MIN.toString());
-    builder.setTestOffsetTime(OffsetTime.MIN.toString());
-    builder.setTestZonedDateTime(OffsetDateTime.MIN.toZonedDateTime().toString());
+    builder
+        .setTestOffsetDateTime(OffsetDateTime.MIN.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+    builder.setTestOffsetTime(OffsetTime.MIN.format(DateTimeFormatter.ISO_OFFSET_TIME));
+    builder.setTestZonedDateTime(
+        OffsetDateTime.MIN.toZonedDateTime().format(DateTimeFormatter.ISO_ZONED_DATE_TIME));
     builder.setTestStrEnum(TestEnum.male.name());
     builder.setTestIntEnum(0);
     builder.setTestEnum(TestEnum.male);

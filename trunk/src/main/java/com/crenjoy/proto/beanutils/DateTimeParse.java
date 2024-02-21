@@ -1,7 +1,6 @@
 package com.crenjoy.proto.beanutils;
 
 import static java.time.temporal.ChronoField.INSTANT_SECONDS;
-
 import java.text.ParsePosition;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -25,32 +24,32 @@ import org.apache.commons.beanutils.ConversionException;
 public class DateTimeParse {
 
   public static DateTimeFormatter[] getInstantFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_INSTANT };
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_INSTANT};
   }
 
   public static DateTimeFormatter[] getZonedDateTimeFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_ZONED_DATE_TIME };
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_ZONED_DATE_TIME};
   }
 
   public static DateTimeFormatter[] getOffsetDateTimeFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_OFFSET_DATE_TIME };
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_OFFSET_DATE_TIME};
   }
 
   public static DateTimeFormatter[] getOffsetTimeFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_OFFSET_TIME };
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_OFFSET_TIME};
   }
 
   /**
    * DateTime DateTimeFormatter Array.
    */
   public static DateTimeFormatter[] getLocalDateTimeFormatters() {
-    DateTimeFormatter[] patterns = new DateTimeFormatter[] { DateTimeFormatter.ISO_LOCAL_DATE_TIME,
+    DateTimeFormatter[] patterns = new DateTimeFormatter[] {DateTimeFormatter.ISO_LOCAL_DATE_TIME,
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"),
         DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss SSS"),
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"),
         DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"),
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
-        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") };
+        DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"), DateTimeFormatter.ISO_INSTANT};
     return new ArrayBuilder<DateTimeFormatter>(patterns).concat(getLocalDateFormatters())
         .builder(new DateTimeFormatter[0]);
   }
@@ -59,19 +58,19 @@ public class DateTimeParse {
    * Date DateTimeFormatter Array.
    */
   public static DateTimeFormatter[] getLocalDateFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_LOCAL_DATE,
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_LOCAL_DATE,
         DateTimeFormatter.ofPattern("yyyy/MM/dd"), DateTimeFormatter.ofPattern("yyyy年MM月dd日"),
         DateTimeFormatter.ofPattern("yyyy-MM"), DateTimeFormatter.ofPattern("yyyy/MM"),
-        DateTimeFormatter.ofPattern("yyyy年MM月") };
+        DateTimeFormatter.ofPattern("yyyy年MM月"), DateTimeFormatter.ISO_INSTANT};
   }
 
   /**
    * Time DateTimeFormatter Array.
    */
   public static DateTimeFormatter[] getLocalTimeFormatters() {
-    return new DateTimeFormatter[] { DateTimeFormatter.ISO_LOCAL_TIME,
+    return new DateTimeFormatter[] {DateTimeFormatter.ISO_LOCAL_TIME,
         DateTimeFormatter.ofPattern("HH:mm:ss.SSS"), DateTimeFormatter.ofPattern("HH:mm:ss"),
-        DateTimeFormatter.ofPattern("HH:mm") };
+        DateTimeFormatter.ofPattern("HH:mm"), DateTimeFormatter.ISO_INSTANT};
   }
 
   /**
@@ -86,7 +85,7 @@ public class DateTimeParse {
    * <li>{@code java.time.LocalTime}</li>
    * </ul>
    *
-   * @param value  text
+   * @param value text
    * @param format DateTimeFormatter
    * @return DateTime.
    */
