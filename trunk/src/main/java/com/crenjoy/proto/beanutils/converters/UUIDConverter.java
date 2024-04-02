@@ -17,6 +17,7 @@ package com.crenjoy.proto.beanutils.converters;
 
 import java.util.UUID;
 import org.apache.commons.beanutils.converters.AbstractConverter;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * {org.apache.commons.beanutils2.Converter} implementation that handles conversion to and from
@@ -72,6 +73,9 @@ public final class UUIDConverter extends AbstractConverter {
   protected <T> T convertToType(final Class<T> type, final Object value) throws Throwable {
     if (UUID.class.equals(type)) {
       String uuid = String.valueOf(value);
+      if (StringUtils.isBlank(uuid)) {
+        return null;
+      }
       if (uuid.length() == 32) {
         uuid = String.format("%s-%s-%s-%s-%s", uuid.substring(0, 8), uuid.substring(8, 12),
             uuid.substring(12, 16), uuid.substring(16, 20), uuid.substring(20));
